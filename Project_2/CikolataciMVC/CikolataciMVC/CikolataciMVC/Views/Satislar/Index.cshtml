@@ -1,0 +1,37 @@
+﻿@model IEnumerable<CikolataciMVC.Models.Satislar>
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Satış Listesi</h2>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Yeni Satış</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ürün</th>
+            <th>Kullanıcı</th>
+            <th>Adet</th>
+            <th>Tarih</th>
+            <th>İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Urun.UrunAdi</td>
+                <td>@s.Kullanici.KullaniciAdi</td>
+                <td>@s.Adet</td>
+                <td>@s.Tarih</td>
+                <td>
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@s.Id">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

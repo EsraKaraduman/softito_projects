@@ -1,0 +1,15 @@
+﻿@model MarketMvcProject.Models.Kategori
+@{
+    Layout = "_AdminLayout";
+}
+
+<h2>Kategoriyi Sil</h2>
+
+<div class="alert alert-danger">
+    <strong>@Model.KategoriAdi</strong> kategorisini silmek istediğine emin misin
+</div>
+
+<form method="post" action="/Kategori/DeleteConfirmed/@Model.KategoriId">
+    <button type="submit" class="btn btn-danger">Evet Sil</button>
+    <a href="/Kategori/Index" class="btn btn-secondary">Vazgeç</a>
+</form>

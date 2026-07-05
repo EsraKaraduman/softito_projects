@@ -1,0 +1,86 @@
+@model SimakYolSupurge.Models.Maintenance
+@{
+    ViewData["Title"] = "Yeni Bakım Kaydı";
+}
+
+<div class="page-header-simak">
+    <div class="container">
+        <h1 class="page-title mb-1">Yeni Bakım & Onarım Kaydı</h1>
+        <p class="text-muted mb-0">Servise giriş yapan araç veya iş makinesi için yeni bakım kartı oluşturun.</p>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="form-card-simak">
+                <form asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="VehicleModel" class="form-label fw-semibold"></label>
+                        <input asp-for="VehicleModel" class="form-control" placeholder="Örn: Bucher CityCat 5006 veya Schmidt Swingo" />
+                        <span asp-validation-for="VehicleModel" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label fw-semibold"></label>
+                        <textarea asp-for="Description" rows="3" class="form-control" placeholder="Yapılacak işlemler, değişecek parçalar ve arıza tespit detayı..."></textarea>
+                        <span asp-validation-for="Description" class="text-danger small"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="StartDate" class="form-label fw-semibold"></label>
+                            <input asp-for="StartDate" class="form-control" />
+                            <span asp-validation-for="StartDate" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="EndDate" class="form-label fw-semibold"></label>
+                            <input asp-for="EndDate" class="form-control" />
+                            <span asp-validation-for="EndDate" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Cost" class="form-label fw-semibold"></label>
+                            <div class="input-group">
+                                <input asp-for="Cost" type="number" class="form-control" placeholder="Maliyet tutarı" />
+                                <span class="input-group-text">TL</span>
+                            </div>
+                            <span asp-validation-for="Cost" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Status" class="form-label fw-semibold"></label>
+                            <select asp-for="Status" class="form-select">
+                                <option value="Beklemede">Beklemede</option>
+                                <option value="Devam Ediyor">Devam Ediyor</option>
+                                <option value="Tamamlandı">Tamamlandı</option>
+                            </select>
+                            <span asp-validation-for="Status" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="TechnicianName" class="form-label fw-semibold"></label>
+                        <input asp-for="TechnicianName" class="form-control" placeholder="Örn: Ahmet Usta veya Simak Yetkili Servis" />
+                        <span asp-validation-for="TechnicianName" class="text-danger small"></span>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary-simak px-4">
+                            <i class="bi bi-save me-2"></i> Kaydet
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary px-4">İptal</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

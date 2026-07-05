@@ -1,0 +1,32 @@
+﻿@model List<MarketMvcProject.Models.Siparis>
+
+<h2>Sipariş Listesi</h2>
+
+<form method="get">
+    <label>Tarihe Göre Filtrele:</label>
+    <input type="date" name="tarih" />
+    <button type="submit">Getir</button>
+</form>
+
+<a href="/Siparis/Create">Yeni Sipariş Ekle</a>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Müşteri</th>
+        <th>Ürün</th>
+        <th>Tarih</th>
+        <th>İşlem</th>
+    </tr>
+
+    @foreach (var s in Model)
+    {
+        <tr>
+            <td>@s.Musteri?.AdSoyad</td>
+            <td>@s.Urun?.UrunAdi</td>
+            <td>@s.Tarih</td>
+            <td>
+                <a href="/Siparis/Delete/@s.SiparisId">Sil</a>
+            </td>
+        </tr>
+    }
+</table>

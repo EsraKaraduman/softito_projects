@@ -1,0 +1,81 @@
+@model SimakYolSupurge.Models.Request
+@{
+    ViewData["Title"] = "Talebi Düzenle";
+}
+
+<div class="page-header-simak">
+    <div class="container">
+        <h1 class="page-title mb-1">Talebi Güncelle (Yönetici)</h1>
+        <p class="text-muted mb-0">Müşteri talebine ait durumu ve notları güncelleyin.</p>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="form-card-simak">
+                <form asp-action="Edit" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="RequestDate" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label asp-for="CustomerName" class="form-label fw-semibold"></label>
+                            <input asp-for="CustomerName" class="form-control" readonly />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="CustomerEmail" class="form-label fw-semibold"></label>
+                            <input asp-for="CustomerEmail" class="form-control" readonly />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="CustomerPhone" class="form-label fw-semibold"></label>
+                            <input asp-for="CustomerPhone" class="form-control" readonly />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="VehicleModel" class="form-label fw-semibold"></label>
+                            <input asp-for="VehicleModel" class="form-control" readonly />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="RequestType" class="form-label fw-semibold"></label>
+                            <input asp-for="RequestType" class="form-control" readonly />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Notes" class="form-label fw-semibold"></label>
+                        <textarea asp-for="Notes" rows="3" class="form-control" readonly></textarea>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Status" class="form-label fw-semibold"></label>
+                        <select asp-for="Status" class="form-select">
+                            <option value="Beklemede">Beklemede</option>
+                            <option value="Onaylandı">Onaylandı</option>
+                            <option value="Reddedildi">Reddedildi</option>
+                        </select>
+                        <span asp-validation-for="Status" class="text-danger small"></span>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary-simak px-4">
+                            <i class="bi bi-save me-2"></i> Talebi Güncelle
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary px-4">Geri Dön</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

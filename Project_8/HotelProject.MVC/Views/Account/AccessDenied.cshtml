@@ -1,0 +1,9 @@
+@{
+    ViewData["Title"] = "Yetkisiz Erişim";
+}
+
+<div class="form-container text-center">
+    <h2 class="text-danger mb-4">Erişim Engellendi</h2>
+    <p class="text-secondary mb-4">Bu sayfayı görüntülemek için yetkiniz bulunmamaktadır. Yalnızca Yönetici (Admin) rolündeki kullanıcılar bu işlemi gerçekleştirebilir.</p>
+    <a asp-controller="Rooms" asp-action="Index" class="btn btn-primary">Odalar Sayfasına Dön</a>
+</div>

@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+body {
+    font-family: 'Fredoka', sans-serif;
+    background: linear-gradient(135deg, #fff0f3 0%, #f6fff8 50%, #eaf4f4 100%);
+    background-attachment: fixed;
+    color: #4a4e69;
+    margin-bottom: 60px;
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid #ffccd5 !important;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 8px 32px 0 rgba(255, 180, 192, 0.2);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #ff758f !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.nav-link {
+    font-weight: 600;
+    color: #6c757d !important;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    padding: 8px 16px !important;
+}
+
+.nav-link:hover {
+    color: #ff758f !important;
+    background-color: #ffe5ec;
+    transform: scale(1.05);
+}
+
+.toy-card {
+    background: white;
+    border: 3px solid #ffccd5;
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 16px rgba(255, 180, 192, 0.15);
+}
+
+.toy-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 16px 24px rgba(255, 180, 192, 0.3);
+    border-color: #ff85a1;
+}
+
+.toy-img {
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid #ffccd5;
+}
+
+.toy-badge {
+    background-color: #ff85a1;
+    color: white;
+    border-radius: 12px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.toy-badge-yellow {
+    background-color: #ffd166;
+    color: #4a4e69;
+    border-radius: 12px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.toy-badge-blue {
+    background-color: #4ea8de;
+    color: white;
+    border-radius: 12px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.btn-toy-primary {
+    background-color: #ff758f;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 10px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(255, 117, 143, 0.2);
+}
+
+.btn-toy-primary:hover {
+    background-color: #ff4f79;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 117, 143, 0.4);
+}
+
+.btn-toy-secondary {
+    background-color: #4ea8de;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 10px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(78, 168, 222, 0.2);
+}
+
+.btn-toy-secondary:hover {
+    background-color: #1e90ff;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(78, 168, 222, 0.4);
+}
+
+.btn-toy-danger {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 8px 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-toy-danger:hover {
+    background-color: #fa5252;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.toy-table {
+    background: white;
+    border-radius: 20px;
+    border: 3px solid #ffccd5;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+}
+
+.toy-table th {
+    background-color: #ffe5ec;
+    color: #ff758f;
+    border-bottom: 3px solid #ffccd5;
+    padding: 15px;
+    font-weight: 700;
+}
+
+.toy-table td {
+    padding: 15px;
+    border-bottom: 1px solid #ffe5ec;
+    vertical-align: middle;
+}
+
+.form-toy {
+    background: white;
+    border: 3px solid #ffccd5;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 12px 24px rgba(255, 180, 192, 0.15);
+}
+
+.form-toy-control {
+    border: 2px solid #ffccd5;
+    border-radius: 14px;
+    padding: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-toy-control:focus {
+    border-color: #ff758f;
+    box-shadow: 0 0 0 0.25rem rgba(255, 117, 143, 0.25);
+    outline: none;
+}
+
+.report-card {
+    background: white;
+    border-radius: 20px;
+    border: 3px solid #ffccd5;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.report-card:hover {
+    transform: scale(1.03);
+}
+
+.report-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.report-val {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ff758f;
+}
+
+.login-container {
+    max-width: 450px;
+    margin: 80px auto;
+}
+
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    .navbar, footer, .btn, .no-print, .btn-sm {
+        display: none !important;
+    }
+    .toy-table, .report-card, .print-container {
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+    }
+}

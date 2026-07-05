@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ArtFlow Sanat Akademisi</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="d-flex flex-column h-100">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom py-3">
+            <div class="container">
+                <a class="navbar-brand navbar-brand-custom" asp-controller="Home" asp-action="Index">ArtFlow</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-custom" asp-controller="Home" asp-action="Index">Kurslar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-custom" asp-controller="Home" asp-action="Instructors">Eğitmenlerimiz</a>
+                        </li>
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link nav-link-custom" asp-controller="Course" asp-action="Index">Kurs Yönetimi</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link nav-link-custom" asp-controller="Instructor" asp-action="Index">Eğitmen Yönetimi</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link nav-link-custom" asp-controller="Enrollment" asp-action="Index">Kayıtlar (Rapor)</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link nav-link-custom" asp-controller="Enrollment" asp-action="MyCourses">Kurslarım</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                    <div class="d-flex align-items-center">
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <span class="text-light me-3">Hoş geldiniz, <strong>@User.Identity.Name</strong></span>
+                            <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-outline-light btn-sm rounded-pill px-3">Çıkış Yap</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <a class="btn btn-outline-light rounded-pill px-3 me-2" asp-controller="Account" asp-action="Login">Giriş Yap</a>
+                            <a class="btn btn-custom-primary rounded-pill px-3" asp-controller="Account" asp-action="Register">Kayıt Ol</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container flex-shrink-0 my-5">
+        <main role="main" class="pb-5">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer-custom mt-auto">
+        <div class="container text-center">
+            <span class="text-muted">&copy; 2026 - ArtFlow Sanat Akademisi - Tüm Hakları Saklıdır.</span>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BiletAl</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="sticky-top shadow-sm bg-white">
+        <nav class="navbar navbar-expand-lg navbar-light py-3">
+            <div class="container">
+                <a class="navbar-brand logo-brand fw-extrabold text-navy" asp-controller="Home" asp-action="Index">
+                    Bilet<span>Al</span>
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link text-navy fw-semibold px-3" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                        </li>
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-navy fw-semibold px-3" asp-controller="Ticket" asp-action="MyTickets">Biletlerim</a>
+                            </li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-navy fw-semibold px-3" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Yönetim
+                                    </a>
+                                    <ul class="dropdown-menu border-0 shadow-sm rounded-3" aria-labelledby="adminDropdown">
+                                        <li><a class="dropdown-menu-item dropdown-item fw-medium py-2" asp-controller="Admin" asp-action="Index">Kontrol Paneli</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-menu-item dropdown-item fw-medium py-2" asp-controller="Admin" asp-action="Events">Etkinlikleri Yönet</a></li>
+                                        <li><a class="dropdown-menu-item dropdown-item fw-medium py-2" asp-controller="Admin" asp-action="Categories">Kategorileri Yönet</a></li>
+                                    </ul>
+                                </li>
+                            }
+                        }
+                    </ul>
+                    <div class="d-flex align-items-center gap-3">
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="user-avatar-circle bg-light-blue text-primary fw-bold">
+                                    @User.Identity.Name?[..1].ToUpper()
+                                </div>
+                                <span class="text-navy fw-semibold">Merhaba, @User.Identity.Name</span>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <span class="badge bg-danger rounded-pill fs-9">Admin</span>
+                                }
+                            </div>
+                            <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-primary btn-custom-outline rounded-pill px-4 fw-semibold">Çıkış Yap</a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Account" asp-action="Login" class="btn btn-link text-navy fw-semibold text-decoration-none">Giriş Yap</a>
+                            <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-custom-solid rounded-pill px-4 fw-semibold shadow-sm">Kayıt Ol</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-content-wrapper">
+        <main role="main" class="pb-5">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer py-5 bg-navy text-white mt-auto">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h4 class="logo-brand fw-extrabold text-white mb-3">
+                        Bilet<span>Al</span>
+                    </h4>
+                    <p class="opacity-75 text-white-50 fs-7">Konser, tiyatro, sinema ve spor etkinlikleri için Türkiye'nin en modern ve kolay bilet rezervasyon platformu.</p>
+                </div>
+                <div class="col-lg-4 ps-lg-5">
+                    <h5 class="fw-bold mb-3 text-white">Hızlı Linkler</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2 fs-7">
+                        <li><a href="/" class="text-white-50 text-decoration-none hover-white">Anasayfa</a></li>
+                        <li><a asp-controller="Ticket" asp-action="MyTickets" class="text-white-50 text-decoration-none hover-white">Biletlerim</a></li>
+                        <li><a asp-controller="Account" asp-action="Login" class="text-white-50 text-decoration-none hover-white">Giriş Yap</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3 text-white">İletişim</h5>
+                    <p class="text-white-50 fs-7 mb-1">Destek: destek@biletal.com</p>
+                    <p class="text-white-50 fs-7 mb-0">Telefon: 0850 123 45 67</p>
+                    <div class="mt-4 fs-8 text-white-50">
+                        &copy; 2026 BiletAl. Tüm Hakları Saklıdır.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

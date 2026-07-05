@@ -1,0 +1,84 @@
+@model SimakYolSupurge.Models.Vehicle
+@{
+    ViewData["Title"] = $"{Model.Brand} {Model.Model} Detayları";
+}
+
+<div class="page-header-simak">
+    <div class="container">
+        <h1 class="page-title mb-1">Araç Detayları</h1>
+        <p class="text-muted mb-0">Seçilen araç veya iş makinesine ait teknik özellikler ve detaylar.</p>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row g-4">
+        <!-- Vehicle Image -->
+        <div class="col-lg-6">
+            <div class="hero-image-wrapper border border-light">
+                @if (string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <div style="height: 400px;" class="w-100 d-flex align-items-center justify-content-center bg-light text-muted">
+                        <i class="bi bi-truck fs-1" style="font-size: 5rem !important;"></i>
+                    </div>
+                }
+                else
+                {
+                    <img src="@Model.ImageUrl" alt="@Model.Brand @Model.Model" class="img-fluid w-100 rounded-4" style="max-height: 450px; object-fit: cover;" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1605787020600-b9ebd5df1d07?q=80&w=800';">
+                }
+            </div>
+        </div>
+
+        <!-- Vehicle Details -->
+        <div class="col-lg-6">
+            <div class="form-card-simak h-100 d-flex flex-column justify-content-between">
+                <div>
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div>
+                            <span class="text-uppercase text-success fw-bold small">@Model.Type</span>
+                            <h2 class="fw-bold text-dark m-0">@Model.Brand @Model.Model</h2>
+                        </div>
+                        <span class="badge px-3 py-2 fs-6 rounded-pill @(Model.Status == "Kiralık" ? "bg-success" : Model.Status == "Satılık" ? "bg-primary" : "bg-warning text-dark")">
+                            @Model.Status
+                        </span>
+                    </div>
+
+                    <p class="text-muted lead mb-4">@Model.Description</p>
+
+                    <div class="row g-3 bg-light p-3 rounded-3 mb-4">
+                        <div class="col-6">
+                            <span class="text-muted d-block small mb-1">Model Yılı</span>
+                            <span class="fw-bold text-dark">@Model.Year</span>
+                        </div>
+                        <div class="col-6">
+                            <span class="text-muted d-block small mb-1">Günlük Kira / Satış Bedeli</span>
+                            <span class="fw-bold text-success fs-5">@Model.Price.ToString("N0") TL</span>
+                            @if (Model.Status == "Kiralık")
+                            {
+                                <span class="text-muted small">/ Gün</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    @if (User.Identity?.IsAuthenticated == true && !User.IsInRole("Admin"))
+                    {
+                        <a asp-controller="Requests" asp-action="Create" asp-route-vehicleModel="@(Model.Brand + " " + Model.Model)" class="btn btn-primary-simak px-5 py-2.5">
+                            <i class="bi bi-chat-left-text me-2"></i> Talep & Teklif Al
+                        </a>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary-simak px-4 py-2.5">
+                            <i class="bi bi-pencil me-2"></i> Düzenle
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger px-4 py-2.5">
+                            <i class="bi bi-trash me-2"></i> Sil
+                        </a>
+                    }
+                    <a asp-action="Index" class="btn btn-outline-secondary px-4 py-2.5">Geri Dön</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

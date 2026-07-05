@@ -1,0 +1,17 @@
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\obj\Debug\net10.0\Dondurmacf.Data.csproj.AssemblyReference.cache
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\obj\Debug\net10.0\Dondurmacf.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\obj\Debug\net10.0\Dondurmacf.Data.AssemblyInfoInputs.cache
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\obj\Debug\net10.0\Dondurmacf.Data.AssemblyInfo.cs
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\obj\Debug\net10.0\Dondurmacf.Data.csproj.CoreCompileInputs.cache
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\bin\Debug\net10.0\Dondurmacf.Data.deps.json
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\bin\Debug\net10.0\Dondurmacf.Data.runtimeconfig.json
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\bin\Debug\net10.0\Dondurmacf.Data.dll
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\bin\Debug\net10.0\Dondurmacf.Data.pdb
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\bin\Debug\net10.0\Dondurmacf.Model.dll
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\bin\Debug\net10.0\Dondurmacf.Model.pdb
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\obj\Debug\net10.0\Dondurma.42AF8A77.Up2Date
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\obj\Debug\net10.0\Dondurmacf.Data.dll
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\obj\Debug\net10.0\refint\Dondurmacf.Data.dll
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\obj\Debug\net10.0\Dondurmacf.Data.pdb
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\obj\Debug\net10.0\Dondurmacf.Data.genruntimeconfig.cache
+C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Data\obj\Debug\net10.0\ref\Dondurmacf.Data.dll

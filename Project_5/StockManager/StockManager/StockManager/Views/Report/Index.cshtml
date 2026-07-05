@@ -1,0 +1,298 @@
+@{
+    ViewData["Title"] = "Raporlar ve Analizler";
+    ViewData["ActivePage"] = "Reports";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="text-white fw-bold mb-1">
+            <i class="fa-solid fa-file-invoice-dollar text-primary me-2"></i>Raporlama ve Analiz
+        </h2>
+        <p class="text-muted small">Envanter değerlemesi, kategori bazlı özetler ve operasyonel çıktılar.</p>
+    </div>
+    <div class="d-flex gap-2">
+        <button class="btn btn-outline-info btn-secondary-premium" onclick="window.print()">
+            <i class="fa-solid fa-print me-2"></i>Sayfayı Yazdır
+        </button>
+    </div>
+</div>
+
+<div class="row g-4 mb-4 print-no-margin">
+    <div class="col-md-4">
+        <div class="card-premium p-4">
+            <span class="text-muted small d-block mb-1">Toplam Envanter Değeri</span>
+            <h2 class="text-white fw-bold mb-0 text-truncate">$@ViewBag.TotalStockValue.ToString("N2")</h2>
+            <div class="text-success mt-2 small">
+                <i class="fa-solid fa-money-bill-trend-up me-1"></i>Mevcut stok değerlemesi
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card-premium p-4">
+            <span class="text-muted small d-block mb-1">Ortalama Ürün Fiyatı</span>
+            <h2 class="text-white fw-bold mb-0 text-truncate">$@ViewBag.AveragePrice.ToString("N2")</h2>
+            <div class="text-info mt-2 small">
+                <i class="fa-solid fa-calculator me-1"></i>Birim başına ortalama
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card-premium p-4">
+            <span class="text-muted small d-block mb-1">Toplam Tanımlı Ürün</span>
+            <h2 class="text-white fw-bold mb-0">@ViewBag.TotalProducts çeşit</h2>
+            <div class="text-primary mt-2 small">
+                <i class="fa-solid fa-boxes-stacked me-1"></i>Kayıtlı benzersiz ürünler
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-premium p-4 mb-4">
+    <ul class="nav nav-pills mb-4 border-bottom border-secondary pb-3" id="reportTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active text-white px-4 py-2 me-2 rounded-3" id="category-tab" data-bs-toggle="tab" data-bs-target="#category" type="button" role="tab" aria-controls="category" aria-selected="true">
+                <i class="fa-solid fa-chart-pie me-2"></i>Kategori Analizi
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link text-white px-4 py-2 me-2 rounded-3" id="inventory-tab" data-bs-toggle="tab" data-bs-target="#inventory" type="button" role="tab" aria-controls="inventory" aria-selected="false">
+                <i class="fa-solid fa-list-check me-2"></i>Stok Envanter Listesi
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link text-white px-4 py-2 me-2 rounded-3" id="warehouses-tab" data-bs-toggle="tab" data-bs-target="#warehouses" type="button" role="tab" aria-controls="warehouses" aria-selected="false">
+                <i class="fa-solid fa-warehouse me-2"></i>Depo Kapasiteleri
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link text-white px-4 py-2 rounded-3" id="suppliers-tab" data-bs-toggle="tab" data-bs-target="#suppliers" type="button" role="tab" aria-controls="suppliers" aria-selected="false">
+                <i class="fa-solid fa-truck-field me-2"></i>Tedarikçi Firmalar
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="reportTabContent">
+        <div class="tab-pane fade show active" id="category" role="tabpanel" aria-labelledby="category-tab">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="text-white fw-bold mb-0">Kategorilere Göre Stok Özetleri</h5>
+                <button class="btn btn-sm btn-outline-success rounded-pill px-3" onclick="exportCsv('categoryTable', 'kategori_bazli_stok.csv')">
+                    <i class="fa-solid fa-file-csv me-1"></i>CSV Dışa Aktar
+                </button>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle" id="categoryTable">
+                    <thead>
+                        <tr class="text-muted small uppercase">
+                            <th>Kategori</th>
+                            <th>Ürün Çeşidi</th>
+                            <th>Toplam Stok Miktarı</th>
+                            <th>Toplam Stok Değeri</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var c in ViewBag.CategorySummary)
+                        {
+                            <tr>
+                                <td class="text-white fw-semibold">@c.Category</td>
+                                <td>@c.UniqueProducts adet</td>
+                                <td>@c.TotalQuantity adet</td>
+                                <td class="text-info font-weight-bold">$@c.TotalValue.ToString("N2")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="inventory" role="tabpanel" aria-labelledby="inventory-tab">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="text-white fw-bold mb-0">Tüm Envanter Değerleme Listesi</h5>
+                <button class="btn btn-sm btn-outline-success rounded-pill px-3" onclick="exportCsv('inventoryTable', 'stok_envanter_listesi.csv')">
+                    <i class="fa-solid fa-file-csv me-1"></i>CSV Dışa Aktar
+                </button>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle" id="inventoryTable">
+                    <thead>
+                        <tr class="text-muted small uppercase">
+                            <th>Barkod / SKU</th>
+                            <th>Ürün Adı</th>
+                            <th>Kategori</th>
+                            <th>Birim Fiyat</th>
+                            <th>Mevcut Stok</th>
+                            <th>Toplam Değer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var p in ViewBag.ProductsList)
+                        {
+                            <tr>
+                                <td><code class="text-info bg-dark bg-opacity-25 px-2 py-1 rounded">@p.Sku</code></td>
+                                <td class="text-white fw-semibold">@p.Name</td>
+                                <td>@p.Category</td>
+                                <td>$@p.UnitPrice.ToString("F2")</td>
+                                <td>@p.Quantity adet</td>
+                                <td class="text-success fw-bold">$@((p.Quantity * p.UnitPrice).ToString("N2"))</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="warehouses" role="tabpanel" aria-labelledby="warehouses-tab">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="text-white fw-bold mb-0">Depo Bilgileri ve Kapasite Kullanımları</h5>
+                <button class="btn btn-sm btn-outline-success rounded-pill px-3" onclick="exportCsv('warehouseTable', 'depo_kapasiteleri.csv')">
+                    <i class="fa-solid fa-file-csv me-1"></i>CSV Dışa Aktar
+                </button>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle" id="warehouseTable">
+                    <thead>
+                        <tr class="text-muted small uppercase">
+                            <th>Depo Adı</th>
+                            <th>Konum</th>
+                            <th>Kapasite</th>
+                            <th>Sorumlu Müdür</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var w in ViewBag.WarehousesList)
+                        {
+                            <tr>
+                                <td class="text-white fw-semibold">@w.Name</td>
+                                <td>@w.Location</td>
+                                <td>@w.Capacity.ToString("N0") m³</td>
+                                <td>@w.ManagerName</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="suppliers" role="tabpanel" aria-labelledby="suppliers-tab">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="text-white fw-bold mb-0">Tedarikçi Firmalar İletişim Rehberi</h5>
+                <button class="btn btn-sm btn-outline-success rounded-pill px-3" onclick="exportCsv('supplierTable', 'tedarikci_rehberi.csv')">
+                    <i class="fa-solid fa-file-csv me-1"></i>CSV Dışa Aktar
+                </button>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle" id="supplierTable">
+                    <thead>
+                        <tr class="text-muted small uppercase">
+                            <th>Firma Adı</th>
+                            <th>İletişim Kişisi</th>
+                            <th>E-posta</th>
+                            <th>Telefon</th>
+                            <th>Adres</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var s in ViewBag.SuppliersList)
+                        {
+                            <tr>
+                                <td class="text-white fw-semibold">@s.Name</td>
+                                <td>@s.ContactPerson</td>
+                                <td>@s.Email</td>
+                                <td>@s.Phone</td>
+                                <td>@s.Address</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tables = ['#categoryTable', '#inventoryTable', '#warehouseTable', '#supplierTable'];
+            tables.forEach(id => {
+                const el = document.querySelector(id);
+                if (el) {
+                    new simpleDatatables.DataTable(el, {
+                        searchable: true,
+                        fixedHeight: false,
+                        perPage: 10,
+                        labels: {
+                            placeholder: "Tabloda ara...",
+                            perPage: "göster",
+                            noRows: "Veri bulunamadı",
+                            info: "{rows} satırdan {start} - {end} gösteriliyor"
+                        }
+                    });
+                }
+            });
+        });
+
+        function exportCsv(tableId, filename) {
+            let csv = [];
+            const table = document.getElementById(tableId);
+            if (!table) return;
+
+            const rows = table.querySelectorAll("tr");
+            
+            for (let i = 0; i < rows.length; i++) {
+                let row = [], cols = rows[i].querySelectorAll("td, th");
+                
+                for (let j = 0; j < cols.length; j++) {
+                    let data = cols[j].innerText.replace(/"/g, '""').trim();
+                    row.push('"' + data + '"');
+                }
+                
+                if (row.length > 0) {
+                    csv.push(row.join(","));
+                }
+            }
+            
+            const blob = new Blob(["\ufeff" + csv.join("\n")], { type: "text/csv;charset=utf-8;" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            link.style.display = "none";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast(filename + " başarıyla indirildi.", "success");
+        }
+    </script>
+}
+
+<style>
+    @@media print {
+        #sidebar, .btn, .toast-container-premium, header, footer, .nav-pills {
+            display: none !important;
+        }
+        #content {
+            padding: 0 !important;
+            margin: 0 !important;
+            width: 100% !important;
+            background: white !important;
+            color: black !important;
+        }
+        .card-premium {
+            border: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            color: black !important;
+            padding: 0 !important;
+        }
+        .table-responsive {
+            overflow: visible !important;
+        }
+        .table {
+            color: black !important;
+        }
+        .text-white {
+            color: black !important;
+        }
+        .print-no-margin {
+            margin-bottom: 0 !important;
+        }
+    }
+</style>

@@ -1,0 +1,88 @@
+@page
+@model Dukkanrzrpg.Pages.Oyuncaklar.IndexModel
+@{
+    ViewData["Title"] = "Oyuncaklar";
+}
+
+<div class="row align-items-center mb-4 no-print">
+    <div class="col-md-4">
+        <h2 style="color: #ff758f; font-weight: 700;">🧸 Oyuncak Listesi</h2>
+    </div>
+    <div class="col-md-8 text-md-end">
+        <a class="btn btn-toy-primary me-2" href="/Oyuncaklar/Create">➕ Yeni Oyuncak Ekle</a>
+        <a class="btn btn-toy-secondary me-2" asp-page-handler="ExportCsv">📥 Excel İndir</a>
+        <button class="btn btn-toy-secondary" onclick="window.print()">🖨️ PDF / Yazdır</button>
+    </div>
+</div>
+
+<form method="get" class="mb-4 no-print">
+    <div class="row g-3">
+        <div class="col-md-6">
+            <input type="text" class="form-control form-toy-control" name="SearchTerm" value="@Model.SearchTerm" placeholder="Oyuncak adı veya açıklama ile ara..." />
+        </div>
+        <div class="col-md-4">
+            <select class="form-select form-toy-control" name="SelectedCategory">
+                <option value="">Tüm Kategoriler</option>
+                @foreach (var kat in Model.Kategoriler)
+                {
+                    if (kat == Model.SelectedCategory)
+                    {
+                        <option value="@kat" selected>@kat</option>
+                    }
+                    else
+                    {
+                        <option value="@kat">@kat</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-toy-primary w-100 py-2">🔍 Ara</button>
+        </div>
+    </div>
+</form>
+
+<div class="row g-4 print-container">
+    @if (!Model.OyuncaklarListesi.Any())
+    {
+        <div class="col-12 text-center my-5">
+            <h4 class="text-muted">Aramanıza uygun oyuncak bulunamadı 🧸</h4>
+        </div>
+    }
+    else
+    {
+        @foreach (var toy in Model.OyuncaklarListesi)
+        {
+            <div class="col-md-4 col-sm-6">
+                <div class="toy-card h-100 d-flex flex-column">
+                    @if (!string.IsNullOrEmpty(toy.ResimUrl))
+                    {
+                        <img src="@toy.ResimUrl" class="toy-img card-img-top" alt="@toy.Ad" />
+                    }
+                    else
+                    {
+                        <div class="toy-img card-img-top d-flex align-items-center justify-content-center bg-light" style="font-size: 4rem;">🧸</div>
+                    }
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title font-weight-bold mb-0" style="color: #4a4e69; font-weight: 700;">@toy.Ad</h5>
+                            <span class="toy-badge">@toy.Kategori</span>
+                        </div>
+                        <p class="card-text text-muted flex-grow-1" style="font-size: 0.95rem;">@toy.Aciklama</p>
+                        <div class="mb-3">
+                            <span class="toy-badge-yellow me-2">👶 @toy.YasGrubu</span>
+                            <span class="toy-badge-blue">📦 Stok: @toy.Stok Adet</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top border-light">
+                            <h4 class="mb-0 text-success" style="font-weight: 700;">@toy.Fiyat.ToString("C2")</h4>
+                            <div class="no-print">
+                                <a class="btn btn-sm btn-outline-warning rounded-pill me-1 px-3" href="/Oyuncaklar/Edit?id=@toy.ID">Düzenle</a>
+                                <a class="btn btn-sm btn-outline-danger rounded-pill px-3" href="/Oyuncaklar/Delete?id=@toy.ID">Sil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

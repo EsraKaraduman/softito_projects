@@ -1,0 +1,101 @@
+@model SimakYolSupurge.Models.Vehicle
+@{
+    ViewData["Title"] = "Aracı Düzenle";
+}
+
+<div class="page-header-simak">
+    <div class="container">
+        <h1 class="page-title mb-1">Aracı Düzenle</h1>
+        <p class="text-muted mb-0">Araç veya iş makinesi bilgilerini güncelleme formu.</p>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="form-card-simak">
+                <form asp-action="Edit" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="Id" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Brand" class="form-label fw-semibold"></label>
+                            <input asp-for="Brand" class="form-control" />
+                            <span asp-validation-for="Brand" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Model" class="form-label fw-semibold"></label>
+                            <input asp-for="Model" class="form-control" />
+                            <span asp-validation-for="Model" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Type" class="form-label fw-semibold"></label>
+                            <select asp-for="Type" class="form-select">
+                                <option value="Yol Süpürme Aracı">Yol Süpürme Aracı</option>
+                                <option value="Kompakt Süpürme Aracı">Kompakt Süpürme Aracı</option>
+                                <option value="İş Makinası (Yükleyici)">İş Makinası (Yükleyici)</option>
+                                <option value="İş Makinası (Ekskavatör)">İş Makinası (Ekskavatör)</option>
+                                <option value="Diğer">Diğer</option>
+                            </select>
+                            <span asp-validation-for="Type" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Year" class="form-label fw-semibold"></label>
+                            <input asp-for="Year" type="number" class="form-control" />
+                            <span asp-validation-for="Year" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Price" class="form-label fw-semibold"></label>
+                            <div class="input-group">
+                                <input asp-for="Price" type="number" class="form-control" />
+                                <span class="input-group-text">TL</span>
+                            </div>
+                            <span asp-validation-for="Price" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Status" class="form-label fw-semibold"></label>
+                            <select asp-for="Status" class="form-select">
+                                <option value="Kiralık">Kiralık</option>
+                                <option value="Satılık">Satılık</option>
+                                <option value="Bakımda">Bakımda</option>
+                                <option value="Pasif">Pasif</option>
+                            </select>
+                            <span asp-validation-for="Status" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ImageUrl" class="form-label fw-semibold"></label>
+                        <input asp-for="ImageUrl" class="form-control" />
+                        <span asp-validation-for="ImageUrl" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Description" class="form-label fw-semibold"></label>
+                        <textarea asp-for="Description" rows="4" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger small"></span>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary-simak px-4">
+                            <i class="bi bi-save me-2"></i> Güncelle
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary px-4">İptal</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

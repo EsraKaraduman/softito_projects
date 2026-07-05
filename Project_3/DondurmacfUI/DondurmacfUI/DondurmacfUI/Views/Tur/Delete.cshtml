@@ -1,0 +1,42 @@
+@model Dondurmacf.Model.DondurmaTur
+
+@{
+    ViewData["Title"] = "Dondurma Türü Sil";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <h1 class="page-title text-danger mb-4">Dondurma Türünü Sil</h1>
+        <div class="card card-custom p-4 border-0">
+            <div class="card-body">
+                <h4 class="text-dark font-weight-semibold mb-3">Bu dondurma türünü silmek istediğinize emin misiniz?</h4>
+                <p class="text-muted">Bu işlem geri alınamaz.</p>
+                <hr class="my-4" />
+                <dl class="row">
+                    <dt class="col-sm-4 font-weight-bold text-dark">Tür No</dt>
+                    <dd class="col-sm-8">@Model.TurNo</dd>
+
+                    <dt class="col-sm-4 font-weight-bold text-dark">Tür Adı</dt>
+                    <dd class="col-sm-8">@Model.Tur</dd>
+
+                    <dt class="col-sm-4 font-weight-bold text-dark">Fiyat</dt>
+                    <dd class="col-sm-8 text-success font-weight-bold">@Model.Fiyat ₺</dd>
+
+                    <dt class="col-sm-4 font-weight-bold text-dark">Kategori</dt>
+                    <dd class="col-sm-8">@Model.Urun?.UrunAdi</dd>
+
+                    <dt class="col-sm-4 font-weight-bold text-dark">Ekleyen Kullanıcı</dt>
+                    <dd class="col-sm-8">@Model.EkleyenKullanici?.AdSoyad</dd>
+                </dl>
+
+                <form asp-action="Delete" asp-route-id="@Model.TurNo" class="mt-4">
+                    <input type="hidden" asp-for="TurNo" />
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-secondary-custom">Geri Dön</a>
+                        <button type="submit" class="btn btn-danger rounded-pill px-4 py-2">Evet, Sil</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

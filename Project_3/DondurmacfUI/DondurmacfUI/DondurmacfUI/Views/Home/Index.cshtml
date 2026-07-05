@@ -1,0 +1,58 @@
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="row align-items-center mt-5">
+    <div class="col-lg-6 mb-4">
+        <h1 class="display-3 font-weight-bold text-dark mb-3" style="line-height: 1.1;">🍦 Lezzet ve Yönetim Bir Arada!</h1>
+        <p class="lead text-muted mb-4">Dondurmacı Yönetim Sistemi ile dondurma türlerinizi, ürün gruplarınızı yönetin ve verilerinizden gelişmiş raporlar elde edin.</p>
+
+        @if (User.Identity != null && User.Identity.IsAuthenticated)
+        {
+            <div class="d-flex gap-3">
+                <a asp-controller="Tur" asp-action="Index" class="btn btn-primary-custom px-4 py-3">🍨 Dondurma Türleri</a>
+                <a asp-controller="Rapor" asp-action="Index" class="btn btn-secondary-custom px-4 py-3">📊 Raporları İncele</a>
+            </div>
+        }
+        else
+        {
+            <a asp-controller="Account" asp-action="Login" class="btn btn-primary-custom px-5 py-3">🔐 Giriş Yap ve Başla</a>
+        }
+    </div>
+    <div class="col-lg-6 text-center">
+        <div class="p-5 bg-white rounded-circle shadow-lg d-inline-block card-custom border-0" style="position: relative;">
+            <span style="font-size: 10rem; display: block; filter: drop-shadow(0 15px 25px rgba(255, 117, 140, 0.4));">🍨</span>
+            <div class="position-absolute translate-middle-y badge-custom-primary px-3 py-2" style="bottom: 10%; right: 10%; font-size: 1rem; border: 3px solid white;">%100 Doğal</div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5 pt-5 text-center">
+    <div class="col-md-4 mb-4">
+        <div class="card card-custom p-4 border-0 h-100">
+            <div class="card-body">
+                <span class="fs-1 d-block mb-3">📁</span>
+                <h4 class="font-weight-bold mb-2">Ürün Kategorileri</h4>
+                <p class="text-muted small">Dondurma ürün gruplarını CRUD (Ekle/Sil/Güncelle) işlemleriyle kolayca düzenleyin.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card card-custom p-4 border-0 h-100">
+            <div class="card-body">
+                <span class="fs-1 d-block mb-3">🔍</span>
+                <h4 class="font-weight-bold mb-2">Gelişmiş Arama</h4>
+                <p class="text-muted small">Dondurma türlerini adlarına veya ürün kategorilerine göre anında arayın.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card card-custom p-4 border-0 h-100">
+            <div class="card-body">
+                <span class="fs-1 d-block mb-3">📈</span>
+                <h4 class="font-weight-bold mb-2">İlişkisel Raporlar</h4>
+                <p class="text-muted small">3 Tablo Join, GroupBy ve LINQ sorgularıyla hazırlanmış 5 adet gelişmiş rapor ekranı.</p>
+            </div>
+        </div>
+    </div>
+</div>

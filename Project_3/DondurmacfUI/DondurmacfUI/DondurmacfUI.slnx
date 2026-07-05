@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Dondurmacf.Data/Dondurmacf.Data.csproj" />
+  <Project Path="Dondurmacf.Model/Dondurmacf.Model.csproj" />
+  <Project Path="DondurmacfUI/DondurmacfUI.csproj" />
+</Solution>

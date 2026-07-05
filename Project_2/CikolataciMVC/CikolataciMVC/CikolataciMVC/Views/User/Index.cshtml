@@ -1,0 +1,126 @@
+@model IEnumerable<CikolataciMVC.Models.Satislar>
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="p-4 bg-light rounded-3 border">
+            <h1 class="display-6 fw-bold text-dark">Kullanıcı Kontrol Paneli</h1>
+            <p class="fs-5 text-muted mb-0">Hoş geldin, <strong class="text-primary">@Context.Session.GetString("KullaniciAdi")</strong>! Bu sayfadan geçmiş siparişlerini görebilir, raporlarını inceleyebilir ve yeni siparişler verebilirsin.</p>
+        </div>
+    </div>
+</div>
+
+<!-- İstatistik Kartları -->
+<div class="row mb-4 g-3">
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm bg-primary-subtle h-100">
+            <div class="card-body py-4">
+                <h6 class="card-subtitle mb-2 text-primary-emphasis text-uppercase fw-semibold">Toplam Harcama</h6>
+                <h2 class="card-title display-6 fw-bold mb-0 text-primary-emphasis">@ViewBag.TopHarcanan.ToString("C2")</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm bg-success-subtle h-100">
+            <div class="card-body py-4">
+                <h6 class="card-subtitle mb-2 text-success-emphasis text-uppercase fw-semibold">Toplam Sipariş Adedi</h6>
+                <h2 class="card-title display-6 fw-bold mb-0 text-success-emphasis">@ViewBag.TopAdet adet</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm bg-warning-subtle h-100">
+            <div class="card-body py-4">
+                <h6 class="card-subtitle mb-2 text-warning-emphasis text-uppercase fw-semibold">En Çok Tercih Edilen</h6>
+                <h2 class="card-title display-6 fw-bold mb-0 text-warning-emphasis fs-2">@ViewBag.FavoriUrun</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Çikolata Satın Alma Formu -->
+    <div class="col-lg-4">
+        <div class="card border shadow-sm">
+            <div class="card-header bg-dark text-white py-3">
+                <h5 class="card-title mb-0">Yeni Sipariş Oluştur</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="SatinAl" method="post">
+                    @Html.AntiForgeryToken()
+                    
+                    <div class="mb-3">
+                        <label for="urunId" class="form-label fw-bold">Çikolata Seçiniz</label>
+                        <select id="urunId" name="urunId" class="form-select" required>
+                            <option value="">-- Çikolata Seçin --</option>
+                            @if (ViewBag.Urunler != null)
+                            {
+                                foreach (var urun in ViewBag.Urunler)
+                                {
+                                    <option value="@urun.Id">@urun.UrunAdi - @urun.Fiyat.ToString("C2")</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="adet" class="form-label fw-bold">Adet</label>
+                        <input type="number" id="adet" name="adet" class="form-control" min="1" value="1" required />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">Satın Al</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Satın Alma Geçmişi -->
+    <div class="col-lg-8">
+        <div class="card border shadow-sm">
+            <div class="card-header bg-secondary text-white py-3">
+                <h5 class="card-title mb-0">Sipariş Geçmişim</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped mb-0 align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="ps-3">Ürün Adı</th>
+                                <th>Birim Fiyat</th>
+                                <th>Adet</th>
+                                <th>Toplam Tutar</th>
+                                <th>Tarih</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Any())
+                            {
+                                foreach (var satis in Model)
+                                {
+                                    var birimFiyat = satis.Urun?.Fiyat ?? 0;
+                                    var toplamTutar = satis.Adet * birimFiyat;
+                                    <tr>
+                                        <td class="ps-3 fw-semibold">@(satis.Urun?.UrunAdi ?? "Bilinmeyen Ürün")</td>
+                                        <td>@birimFiyat.ToString("C2")</td>
+                                        <td><span class="badge bg-secondary">@satis.Adet</span></td>
+                                        <td class="fw-bold text-success">@toplamTutar.ToString("C2")</td>
+                                        <td class="text-muted">@satis.Tarih.ToString("dd.MM.yyyy HH:mm")</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="5" class="text-center py-4 text-muted">Henüz hiç siparişiniz bulunmamaktadır.</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

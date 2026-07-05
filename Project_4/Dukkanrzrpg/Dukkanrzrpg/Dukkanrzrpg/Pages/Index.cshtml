@@ -1,0 +1,64 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Hoş Geldiniz";
+    var isLoggedIn = ViewContext.HttpContext.Request.Cookies["IsLoggedIn"] == "true";
+}
+
+<div class="text-center py-5">
+    <div style="font-size: 5.5rem; animation: bounce 2s infinite;">🧸🎈🚂</div>
+    <h1 class="display-3 mb-3" style="color: #ff758f; font-weight: 800; text-shadow: 2px 2px 4px rgba(255, 117, 143, 0.2);">
+        ToyLand Dünyası
+    </h1>
+    <p class="lead mb-5" style="font-size: 1.4rem; color: #6c757d; font-weight: 600;">
+        Renkli, tatlı ve sevimli oyuncak dükkanı yönetim panelimize hoş geldiniz!
+    </p>
+
+    @if (isLoggedIn)
+    {
+        <div class="row justify-content-center g-4">
+            <div class="col-md-4">
+                <a href="/Oyuncaklar/Index" class="text-decoration-none">
+                    <div class="report-card p-4 h-100">
+                        <div style="font-size: 3.5rem; margin-bottom: 15px;">🧸</div>
+                        <h4 style="color: #ff758f; font-weight: 700;">Oyuncak Yönetimi</h4>
+                        <p class="text-muted mt-2">Oyuncakları listeleyin, ekleyin, güncelleyin ve silin.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/Musteriler/Index" class="text-decoration-none">
+                    <div class="report-card p-4 h-100" style="border-color: #4ea8de;">
+                        <div style="font-size: 3.5rem; margin-bottom: 15px;">👥</div>
+                        <h4 style="color: #4ea8de; font-weight: 700;">Müşteri Yönetimi</h4>
+                        <p class="text-muted mt-2">Kayıtlı müşterileri inceleyin ve yeni müşteri ekleyin.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/Rapor" class="text-decoration-none">
+                    <div class="report-card p-4 h-100" style="border-color: #ffd166;">
+                        <div style="font-size: 3.5rem; margin-bottom: 15px;">📊</div>
+                        <h4 style="color: #d8a413; font-weight: 700;">Dükkan Raporları</h4>
+                        <p class="text-muted mt-2">Envanter, stok ve genel dükkan istatistiklerini raporlayın.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="mt-4">
+            <a class="btn btn-toy-primary btn-lg px-5 py-3 font-weight-bold" href="/Login" style="font-size: 1.25rem;">
+                🔑 Yönetici Girişi Yap
+            </a>
+        </div>
+    }
+</div>
+
+<style>
+@@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+</style>

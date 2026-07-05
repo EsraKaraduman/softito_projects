@@ -1,0 +1,21 @@
+﻿@model MarketMvcProject.Models.Urun
+
+<h2>Yeni Ürün Ekle</h2>
+
+<form method="post">
+    <label>Ürün Adı</label><br />
+    <input type="text" name="UrunAdi" /><br /><br />
+
+    <label>Fiyat</label><br />
+    <input type="number" step="0.01" name="Fiyat" /><br /><br />
+
+    <label>Kategori</label><br />
+    <select name="KategoriId">
+        @foreach (var k in ViewBag.Kategoriler)
+        {
+            <option value="@k.KategoriId">@k.KategoriAdi</option>
+        }
+    </select><br /><br />
+
+    <button type="submit">Kaydet</button>
+</form>

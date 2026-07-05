@@ -1,0 +1,43 @@
+﻿@model CikolataciMVC.Models.Satislar
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Satış Düzenle</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label>Ürün</label>
+        <select asp-for="UrunId" class="form-select">
+            @foreach (var u in ViewBag.Urunler)
+            {
+                <option value="@u.Id" selected="@(u.Id == Model.UrunId)">
+                    @u.UrunAdi
+                </option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group mt-2">
+        <label>Kullanıcı</label>
+        <select asp-for="KullaniciId" class="form-select">
+            @foreach (var k in ViewBag.Kullanicilar)
+            {
+                <option value="@k.Id" selected="@(k.Id == Model.KullaniciId)">
+                    @k.KullaniciAdi
+                </option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group mt-2">
+        <label>Adet</label>
+        <input asp-for="Adet" class="form-control" />
+    </div>
+
+    <button class="btn btn-primary mt-3">Güncelle</button>
+    <a class="btn btn-secondary mt-3" asp-action="Index">Geri</a>
+</form>

@@ -1,0 +1,224 @@
+@{
+    ViewData["Title"] = "Depo Yönetimi (Admin)";
+    ViewData["ActivePage"] = "Warehouses";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="text-white fw-bold mb-1">
+            <i class="fa-solid fa-warehouse text-primary me-2"></i>Depo Yönetimi
+        </h2>
+        <p class="text-muted small">Stok depolama merkezlerinin ve depo sorumlularının yönetimi.</p>
+    </div>
+    <button class="btn btn-premium" onclick="openAddModal()">
+        <i class="fa-solid fa-plus me-2"></i>Yeni Depo Ekle
+    </button>
+</div>
+
+<div class="card-premium p-4">
+    <div class="table-responsive" id="tableContainer">
+    </div>
+</div>
+
+<div class="modal fade" id="warehouseModal" tabindex="-1" aria-labelledby="warehouseModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-content-premium">
+            <div class="modal-header modal-header-premium">
+                <h5 class="modal-title text-white fw-bold" id="warehouseModalLabel">Depo Ekle</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Kapat"></button>
+            </div>
+            <form id="warehouseForm" onsubmit="saveWarehouse(event)">
+                <div class="modal-body p-4">
+                    <input type="hidden" id="warehouseId" name="Id" value="0" />
+                    
+                    <div class="mb-3">
+                        <label for="warehouseName" class="form-label text-muted small">Depo Adı</label>
+                        <input type="text" class="form-control form-control-premium" id="warehouseName" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="warehouseLocation" class="form-label text-muted small">Konum</label>
+                        <input type="text" class="form-control form-control-premium" id="warehouseLocation" required />
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="warehouseCapacity" class="form-label text-muted small">Kapasite (m³)</label>
+                            <input type="number" min="1" class="form-control form-control-premium" id="warehouseCapacity" required />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="warehouseManager" class="form-label text-muted small">Depo Müdürü</label>
+                            <input type="text" class="form-control form-control-premium" id="warehouseManager" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer modal-footer-premium">
+                    <button type="button" class="btn btn-secondary-premium" data-bs-dismiss="modal">İptal</button>
+                    <button type="submit" class="btn btn-premium">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        let dataTableInstance = null;
+        const warehouseModal = new bootstrap.Modal(document.getElementById('warehouseModal'));
+
+        document.addEventListener("DOMContentLoaded", function() {
+            loadWarehouses();
+        });
+
+        function loadWarehouses() {
+            $.ajax({
+                url: '/Warehouse/GetList',
+                type: 'GET',
+                dataType: 'json',
+                success: function(warehouses) {
+                    let tableHtml = `
+                        <table id="warehousesTable" class="table table-dark table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Depo Adı</th>
+                                    <th>Konum</th>
+                                    <th>Kapasite (m³)</th>
+                                    <th>Depo Müdürü</th>
+                                    <th class="text-end">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    `;
+
+                    warehouses.forEach(w => {
+                        tableHtml += `
+                            <tr>
+                                <td class="text-white fw-semibold">${escapeHtml(w.name)}</td>
+                                <td>${escapeHtml(w.location)}</td>
+                                <td>${w.capacity.toLocaleString()} m³</td>
+                                <td>${escapeHtml(w.managerName)}</td>
+                                <td class="text-end">
+                                    <button class="btn btn-outline-info btn-sm me-1 rounded-3" onclick="editWarehouse(${w.id})">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger btn-sm rounded-3" onclick="deleteWarehouse(${w.id})">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `;
+                    });
+
+                    tableHtml += `
+                            </tbody>
+                        </table>
+                    `;
+
+                    document.getElementById('tableContainer').innerHTML = tableHtml;
+
+                    dataTableInstance = new simpleDatatables.DataTable("#warehousesTable", {
+                        searchable: true,
+                        fixedHeight: false,
+                        perPage: 10,
+                        labels: {
+                            placeholder: "Ara...",
+                            perPage: "depo göster",
+                            noRows: "Kayıt bulunamadı",
+                            info: "{rows} depodan {start} ile {end} arası gösteriliyor",
+                        }
+                    });
+                },
+                error: function() {
+                    showToast("Depo listesi yüklenirken hata oluştu!", "danger");
+                }
+            });
+        }
+
+        function openAddModal() {
+            document.getElementById('warehouseModalLabel').innerText = "Yeni Depo Ekle";
+            document.getElementById('warehouseId').value = "0";
+            document.getElementById('warehouseForm').reset();
+            warehouseModal.show();
+        }
+
+        function editWarehouse(id) {
+            $.ajax({
+                url: `/Warehouse/GetById/${id}`,
+                type: 'GET',
+                success: function(warehouse) {
+                    document.getElementById('warehouseModalLabel').innerText = "Depo Düzenle";
+                    document.getElementById('warehouseId').value = warehouse.id;
+                    document.getElementById('warehouseName').value = warehouse.name;
+                    document.getElementById('warehouseLocation').value = warehouse.location;
+                    document.getElementById('warehouseCapacity').value = warehouse.capacity;
+                    document.getElementById('warehouseManager').value = warehouse.managerName;
+                    
+                    warehouseModal.show();
+                },
+                error: function() {
+                    showToast("Depo bilgileri alınırken hata oluştu!", "danger");
+                }
+            });
+        }
+
+        function saveWarehouse(e) {
+            e.preventDefault();
+
+            const warehouse = {
+                Id: parseInt(document.getElementById('warehouseId').value),
+                Name: document.getElementById('warehouseName').value,
+                Location: document.getElementById('warehouseLocation').value,
+                Capacity: parseInt(document.getElementById('warehouseCapacity').value),
+                ManagerName: document.getElementById('warehouseManager').value
+            };
+
+            $.ajax({
+                url: '/Warehouse/Save',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(warehouse),
+                success: function(res) {
+                    if (res.success) {
+                        showToast(res.message, "success");
+                        warehouseModal.hide();
+                        loadWarehouses();
+                    } else {
+                        showToast(res.message, "danger");
+                    }
+                },
+                error: function() {
+                    showToast("İşlem gerçekleştirilirken hata oluştu!", "danger");
+                }
+            });
+        }
+
+        function deleteWarehouse(id) {
+            if (confirm("Bu depoyu silmek istediğinize emin misiniz?")) {
+                $.ajax({
+                    url: `/Warehouse/Delete/${id}`,
+                    type: 'POST',
+                    success: function(res) {
+                        if (res.success) {
+                            showToast(res.message, "success");
+                            loadWarehouses();
+                        } else {
+                            showToast(res.message, "danger");
+                        }
+                    },
+                    error: function() {
+                        showToast("Depo silinirken hata oluştu!", "danger");
+                    }
+                });
+            }
+        }
+
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    </script>
+}

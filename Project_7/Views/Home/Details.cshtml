@@ -1,0 +1,84 @@
+@model Project_7.Models.Course
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="row mt-5">
+    <div class="col-lg-6 mb-4">
+        <div class="glass-card p-2">
+            <img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid rounded-4 w-100" style="max-height: 450px; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600'" />
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="glass-card d-flex flex-column justify-content-between p-4">
+            <div>
+                <span class="category-badge">
+                    @(Model.Category switch
+                    {
+                        "Painting" => "Resim",
+                        "Guitar" => "Gitar",
+                        "Music" => "Müzik",
+                        "Wood Painting" => "Ahşap Boyama",
+                        _ => Model.Category
+                    })
+                </span>
+                <h1 class="hero-title text-start mb-3">@Model.Title</h1>
+                <p class="fs-5 text-light mb-4">@Model.Description</p>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-6">
+                        <div class="bg-dark bg-opacity-25 p-3 rounded-3 border border-secondary">
+                            <span class="text-muted d-block small">KURS SÜRESİ</span>
+                            <span class="fs-5 fw-bold text-white">⏱ @Model.Duration</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="bg-dark bg-opacity-25 p-3 rounded-3 border border-secondary">
+                            <span class="text-muted d-block small">KURS ÜCRETİ</span>
+                            <span class="fs-5 fw-bold text-warning">@Model.Price.ToString("C2")</span>
+                        </div>
+                    </div>
+                </div>
+
+                @if (Model.Instructor != null)
+                {
+                    <div class="d-flex align-items-center p-3 rounded-3 bg-dark bg-opacity-25 border border-secondary mb-4">
+                        <img src="@Model.Instructor.ImageUrl" alt="@Model.Instructor.FullName" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100'" />
+                        <div>
+                            <span class="text-muted d-block small">EĞİTMEN</span>
+                            <span class="fw-bold text-white">@Model.Instructor.FullName</span>
+                            <span class="text-muted d-block small">@Model.Instructor.Specialty</span>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="mt-4">
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="alert alert-info bg-dark bg-opacity-50 text-info border-info mb-0">
+                            Yönetici hesabı ile giriş yaptınız. Kurs kaydı öğrenciler içindir.
+                        </div>
+                    }
+                    else
+                    {
+                        <form asp-controller="Enrollment" asp-action="Enroll" method="post">
+                            <input type="hidden" name="courseId" value="@Model.Id" />
+                            <button type="submit" class="btn btn-custom-primary w-100 py-3 rounded-3 fs-5">Kursa Hemen Kaydol</button>
+                        </form>
+                    }
+                }
+                else
+                {
+                    <div class="text-center">
+                        <p class="text-muted mb-3">Bu kursa kaydolmak için üye olmanız gerekmektedir.</p>
+                        <a asp-controller="Account" asp-action="Login" class="btn btn-custom-primary w-100 py-3 rounded-3 fs-5">Giriş Yap ve Kaydol</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

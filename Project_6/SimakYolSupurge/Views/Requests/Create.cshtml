@@ -1,0 +1,82 @@
+@model SimakYolSupurge.Models.Request
+@{
+    ViewData["Title"] = "Teklif & Kiralama Talebi Oluştur";
+}
+
+<div class="page-header-simak">
+    <div class="container">
+        <h1 class="page-title mb-1">Talep Oluştur</h1>
+        <p class="text-muted mb-0">Seçtiğiniz araç veya iş makinesi için kiralama veya satın alma teklif talebi gönderin.</p>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="form-card-simak">
+                <form asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label asp-for="CustomerName" class="form-label fw-semibold"></label>
+                            <input asp-for="CustomerName" class="form-control" placeholder="Adınız Soyadınız veya Firma Ünvanı" />
+                            <span asp-validation-for="CustomerName" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="CustomerEmail" class="form-label fw-semibold"></label>
+                            <input asp-for="CustomerEmail" type="email" class="form-control" placeholder="iletisim@e-posta.com" />
+                            <span asp-validation-for="CustomerEmail" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="CustomerPhone" class="form-label fw-semibold"></label>
+                            <input asp-for="CustomerPhone" type="tel" class="form-control" placeholder="0532 XXXXXXX" />
+                            <span asp-validation-for="CustomerPhone" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="VehicleModel" class="form-label fw-semibold"></label>
+                            <input asp-for="VehicleModel" class="form-control" placeholder="Örn: Bucher CityCat 5006" />
+                            <span asp-validation-for="VehicleModel" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="RequestType" class="form-label fw-semibold"></label>
+                            <select asp-for="RequestType" class="form-select">
+                                <option value="Kiralama">Kiralama</option>
+                                <option value="Satın Alma">Satın Alma</option>
+                            </select>
+                            <span asp-validation-for="RequestType" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Notes" class="form-label fw-semibold"></label>
+                        <textarea asp-for="Notes" rows="4" class="form-control" placeholder="Kiralama süresi, teslimat adresi veya özel istekleriniz..."></textarea>
+                        <span asp-validation-for="Notes" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Hidden default value for creation -->
+                    <input type="hidden" asp-for="Status" value="Beklemede" />
+                    <input type="hidden" asp-for="RequestDate" value="@DateTime.UtcNow.ToString("yyyy-MM-dd")" />
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary-simak px-5 py-2.5">
+                            <i class="bi bi-send me-2"></i> Talebi İlet
+                        </button>
+                        <a asp-controller="Vehicles" asp-action="Index" class="btn btn-outline-secondary px-4 py-2.5">İptal</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

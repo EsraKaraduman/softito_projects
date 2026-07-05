@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Kayıt Ol";
+}
+
+<div class="form-container">
+    <h2 class="text-center mb-4"><span class="text-gradient">Kayıt Ol</span></h2>
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+    <form method="post" asp-action="Register">
+        <div class="mb-3">
+            <label class="form-label">Kullanıcı Adı</label>
+            <input type="text" name="username" class="form-control" placeholder="john_doe" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">E-posta Adresi</label>
+            <input type="email" name="email" class="form-control" placeholder="john@example.com" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Şifre</label>
+            <input type="password" name="password" class="form-control" placeholder="••••••••" required />
+        </div>
+        <div class="mb-4">
+            <label class="form-label">Rol Seçimi</label>
+            <select name="role" class="form-select" required>
+                <option value="Guest">Misafir (Guest)</option>
+                <option value="Admin">Yönetici (Admin)</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 py-2.5">Kayıt Ol</button>
+    </form>
+    <div class="text-center mt-4">
+        <span class="text-secondary">Zaten bir hesabınız var mı?</span>
+        <a asp-action="Login" class="text-gradient fw-bold ms-1" style="text-decoration:none">Giriş Yap</a>
+    </div>
+</div>

@@ -1,0 +1,126 @@
+@model IEnumerable<Project_7.Models.EnrollmentDetailViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArtFlow Kayıt Raporu</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .report-header {
+            border-bottom: 3px double #000000;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        .report-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .metadata-label {
+            font-weight: bold;
+        }
+        .signature-section {
+            margin-top: 50px;
+        }
+        .print-btn-container {
+            margin-bottom: 20px;
+        }
+        @@media print {
+            .print-btn-container {
+                display: none;
+            }
+            body {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="print-btn-container text-end">
+            <button onclick="window.print()" class="btn btn-primary px-4 py-2">Raporu Yazdır / PDF Kaydet</button>
+            <button onclick="window.close()" class="btn btn-secondary px-4 py-2 ms-2">Kapat</button>
+        </div>
+
+        <div class="report-header d-flex justify-content-between align-items-end">
+            <div>
+                <h1 class="report-title mb-1">ArtFlow Sanat Akademisi</h1>
+                <p class="mb-0 text-muted">Öğrenci Kurs Kayıtları Resmi Raporu</p>
+            </div>
+            <div class="text-end text-muted small">
+                <p class="mb-0"><span class="metadata-label">Rapor Tarihi:</span> @DateTime.Now.ToString("dd.MM.yyyy HH:mm")</p>
+                <p class="mb-0"><span class="metadata-label">Toplam Kayıt:</span> @Model.Count()</p>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Kayıt ID</th>
+                    <th>Öğrenci Adı</th>
+                    <th>E-posta</th>
+                    <th>Kurs Adı</th>
+                    <th>Kategori</th>
+                    <th>Ücret</th>
+                    <th>Kayıt Tarihi</th>
+                    <th>Durum</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="fw-bold">#@item.EnrollmentId</td>
+                        <td>@item.UserFullName</td>
+                        <td>@item.UserEmail</td>
+                        <td>@item.CourseTitle</td>
+                        <td>
+                            @(item.Category switch
+                            {
+                                "Painting" => "Resim",
+                                "Guitar" => "Gitar",
+                                "Music" => "Müzik",
+                                "Wood Painting" => "Ahşap Boyama",
+                                _ => item.Category
+                            })
+                        </td>
+                        <td class="text-end">@item.CoursePrice.ToString("C2")</td>
+                        <td>@item.EnrollmentDate.ToString("dd.MM.yyyy HH:mm")</td>
+                        <td>
+                            @(item.Status == "Active" ? "Aktif" : "İptal Edildi")
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="row signature-section">
+            <div class="col-6 offset-6 text-center">
+                <p class="mb-5"><span class="metadata-label">Yönetici İmza / Kaşe</span></p>
+                <p class="fw-bold">ArtFlow Yönetimi</p>
+                <div style="border-bottom: 1px solid #000000; width: 150px; margin: 0 auto;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                window.print();
+            }, 500);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿@model List<MarketMvcProject.Models.Kullanici>
+@{
+    Layout = "_AdminLayout";
+}
+
+<h2>Kullanıcılar</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Kullanıcı Adı</th>
+            <th>Rol</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var k in Model)
+        {
+            <tr>
+                <td>@k.KullaniciId</td>
+                <td>@k.KullaniciAdi</td>
+                <td>@k.Rol</td>
+            </tr>
+        }
+    </tbody>
+</table>

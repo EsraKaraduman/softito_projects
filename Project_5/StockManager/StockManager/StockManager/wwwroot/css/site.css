@@ -1,0 +1,350 @@
+:root {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #1e293b;
+    --accent-glow: rgba(99, 102, 241, 0.15);
+    --border-color: #334155;
+    
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --info: #06b6d4;
+    
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --sidebar-width: 260px;
+}
+
+body {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-main) !important;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+/* Glassmorphism & Cards */
+.card-premium {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--info));
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.card-premium:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 0 15px var(--accent-glow);
+}
+
+.card-premium:hover::before {
+    opacity: 1;
+}
+
+/* Sidebar Navigation */
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    flex: 1;
+}
+
+#sidebar {
+    min-width: var(--sidebar-width);
+    max-width: var(--sidebar-width);
+    background: var(--bg-secondary);
+    color: var(--text-main);
+    transition: all 0.3s;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+#sidebar .sidebar-header {
+    padding: 24px;
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(15, 23, 42, 0.3);
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    flex: 1;
+}
+
+#sidebar ul li {
+    padding: 0 15px;
+    margin-bottom: 8px;
+}
+
+#sidebar ul li a {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-muted);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+#sidebar ul li a:hover, #sidebar ul li.active a {
+    color: var(--text-main);
+    background: var(--primary);
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+}
+
+#sidebar ul li.active a {
+    font-weight: 600;
+}
+
+#content {
+    width: 100%;
+    padding: 40px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    overflow-y: auto;
+    background-color: var(--bg-primary) !important;
+    color: var(--text-main) !important;
+}
+
+/* Buttons */
+.btn-premium {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 24px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    transition: all 0.2s;
+}
+
+.btn-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    color: white;
+}
+
+.btn-secondary-premium {
+    background: var(--border-color);
+    color: var(--text-main);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 10px 24px;
+    transition: all 0.2s;
+}
+
+.btn-secondary-premium:hover {
+    background: #475569;
+    color: white;
+}
+
+/* Modals */
+.modal-content-premium {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    color: var(--text-main);
+}
+
+.modal-header-premium {
+    border-bottom: 1px solid var(--border-color);
+    padding: 20px 24px;
+}
+
+.modal-footer-premium {
+    border-top: 1px solid var(--border-color);
+    padding: 20px 24px;
+}
+
+/* Inputs */
+.form-control-premium {
+    background-color: var(--bg-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+    border-radius: 10px !important;
+    padding: 12px 16px !important;
+}
+
+.form-control-premium:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px var(--accent-glow) !important;
+}
+
+/* Tables and Custom Simple-DataTables Styling */
+.datatable-wrapper {
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.datatable-table {
+    background-color: transparent !important;
+    color: var(--text-main) !important;
+}
+
+.datatable-table th {
+    border-bottom: 2px solid var(--border-color) !important;
+    color: var(--text-muted) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    padding: 16px !important;
+}
+
+.datatable-table td {
+    border-bottom: 1px solid var(--border-color) !important;
+    padding: 16px !important;
+    vertical-align: middle !important;
+}
+
+.datatable-pagination a {
+    color: var(--text-muted) !important;
+    background: var(--bg-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 6px !important;
+    margin: 0 3px !important;
+}
+
+.datatable-pagination .active a, .datatable-pagination a:hover {
+    background: var(--primary) !important;
+    color: white !important;
+    border-color: var(--primary) !important;
+}
+
+.datatable-input {
+    background-color: var(--bg-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+    border-radius: 8px !important;
+    padding: 8px 14px !important;
+}
+
+.datatable-selector {
+    background-color: var(--bg-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+    border-radius: 8px !important;
+    padding: 8px 24px 8px 12px !important;
+}
+
+/* Glass Login */
+.login-body {
+    background: radial-gradient(circle at top left, #1e1b4b 0%, #0f172a 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Toast Notifications */
+.toast-container-premium {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+}
+
+.toast-premium {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    color: var(--text-main);
+    min-width: 300px;
+}
+
+.toast-premium.success {
+    border-left-color: var(--success);
+}
+
+.toast-premium.danger {
+    border-left-color: var(--danger);
+}
+
+.toast-premium.warning {
+    border-left-color: var(--warning);
+}
+
+/* Stats Pill */
+.stats-pill {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.stats-pill-success {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+}
+
+.stats-pill-danger {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+}
+
+.stats-pill-warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning);
+}
+
+/* Explicit color overrides to prevent Bootstrap from washing them out */
+.text-white {
+    color: #ffffff !important;
+}
+.text-muted {
+    color: var(--text-muted) !important;
+}
+.text-primary {
+    color: #818cf8 !important;
+}
+.text-success {
+    color: #34d399 !important;
+}
+.text-warning {
+    color: #fbbf24 !important;
+}
+.text-danger {
+    color: #f87171 !important;
+}
+.text-info {
+    color: #22d3ee !important;
+}

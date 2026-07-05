@@ -1,0 +1,10 @@
+﻿@model MarketMvcProject.Models.Siparis
+
+<h2>Sipariş Sil</h2>
+
+<p>@Model.Musteri?.AdSoyad - @Model.Urun?.UrunAdi siparişini silmek istediğine emin misin?</p>
+
+<form method="post">
+    <input type="hidden" name="SiparisId" value="@Model.SiparisId" />
+    <button type="submit">Sil</button>
+</form>

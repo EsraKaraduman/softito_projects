@@ -1,0 +1,55 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Giriş Yap";
+}
+
+<div class="login-body">
+    <div class="login-card text-center">
+        <div class="mb-4">
+            <div class="d-inline-flex align-items-center justify-content-center bg-primary text-white rounded-circle mb-3" style="width: 64px; height: 64px;">
+                <i class="fa-solid fa-boxes-stacked fs-2"></i>
+            </div>
+            <h3 class="text-white fw-bold mb-1">StockManager</h3>
+            <p class="text-muted small">Stok Takip Sistemi</p>
+        </div>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger border-0 text-start py-2 small mb-3" role="alert">
+                <i class="fa-solid fa-triangle-exclamation me-2"></i>@ViewBag.Error
+            </div>
+        }
+
+        <form asp-action="Login" method="post" class="text-start">
+            <div class="mb-3">
+                <label for="username" class="form-label text-muted small">Kullanıcı Adı</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent border-secondary text-muted"><i class="fa-solid fa-user"></i></span>
+                    <input type="text" class="form-control form-control-premium" id="username" name="username" placeholder="admin veya user" required />
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="form-label text-muted small">Şifre</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent border-secondary text-muted"><i class="fa-solid fa-lock"></i></span>
+                    <input type="password" class="form-control form-control-premium" id="password" name="password" placeholder="••••••••" required />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-premium w-100 py-2.5 mb-3">
+                <i class="fa-solid fa-right-to-bracket me-2"></i>Giriş Yap
+            </button>
+        </form>
+
+        <div class="mt-4 p-3 bg-dark bg-opacity-20 border border-secondary border-opacity-50 rounded-3 text-start">
+            <span class="d-block text-primary small fw-semibold mb-1"><i class="fa-solid fa-circle-info me-1"></i> Demo Hesaplar:</span>
+            <div class="small text-muted mb-1">
+                <strong>Yönetici (Full Erişim):</strong><br>
+                Kullanıcı: <code class="text-info">admin</code> / Şifre: <code class="text-info">admin123</code>
+            </div>
+            <div class="small text-muted">
+                <strong>Kullanıcı (Ürün Yönetimi):</strong><br>
+                Kullanıcı: <code class="text-info">user</code> / Şifre: <code class="text-info">user123</code>
+            </div>
+        </div>
+    </div>
+</div>

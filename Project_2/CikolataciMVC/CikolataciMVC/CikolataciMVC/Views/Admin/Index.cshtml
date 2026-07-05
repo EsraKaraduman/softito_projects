@@ -1,0 +1,84 @@
+@{
+    Layout = "_Layout";
+}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="p-4 bg-dark text-white rounded-3 border">
+            <h1 class="display-6 fw-bold">Yönetici Kontrol Paneli</h1>
+            <p class="fs-5 text-light-50 mb-0">Hoş geldin, <strong>@Context.Session.GetString("KullaniciAdi")</strong>. Projenin genel durumunu ve satış raporlarını buradan takip edebilirsin.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Genel Rapor İstatistik Kartları -->
+<div class="row mb-4 g-3">
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-white bg-primary h-100">
+            <div class="card-body py-4">
+                <h6 class="card-subtitle mb-2 text-white-50 text-uppercase fw-semibold">Toplam Gelir</h6>
+                <h2 class="card-title display-6 fw-bold mb-0">@ViewBag.ToplamGelir.ToString("C2")</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-white bg-success h-100">
+            <div class="card-body py-4">
+                <h6 class="card-subtitle mb-2 text-white-50 text-uppercase fw-semibold">Toplam Sipariş Adedi</h6>
+                <h2 class="card-title display-6 fw-bold mb-0">@ViewBag.ToplamSatisAdet adet</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-white bg-warning h-100">
+            <div class="card-body py-4">
+                <h6 class="card-subtitle mb-2 text-white-50 text-uppercase fw-semibold">Kayıtlı Kullanıcı</h6>
+                <h2 class="card-title display-6 fw-bold mb-0">@ViewBag.ToplamKullanici</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm text-white bg-info h-100">
+            <div class="card-body py-4">
+                <h6 class="card-subtitle mb-2 text-white-50 text-uppercase fw-semibold">Ürün Çeşidi</h6>
+                <h2 class="card-title display-6 fw-bold mb-0">@ViewBag.ToplamUrun</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Yönetim Menüsü -->
+<div class="row">
+    <div class="col-12">
+        <div class="card border shadow-sm">
+            <div class="card-header bg-secondary text-white py-3">
+                <h5 class="card-title mb-0">Veri Tabanı Yönetim Menüsü</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Aşağıdaki butonları kullanarak veri tabanı tabloları üzerinde CRUD (Ekleme, Listeleme, Güncelleme, Silme) işlemlerini gerçekleştirebilirsiniz:</p>
+                <div class="row g-2">
+                    <div class="col-md-3">
+                        <a asp-controller="Kategoriler" asp-action="Index" class="btn btn-outline-dark w-100 py-3 fw-bold">
+                            📂 Kategoriler
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a asp-controller="Urunler" asp-action="Index" class="btn btn-outline-dark w-100 py-3 fw-bold">
+                            🍫 Ürünler
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a asp-controller="Satislar" asp-action="Index" class="btn btn-outline-dark w-100 py-3 fw-bold">
+                            🛍️ Satışlar
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a asp-controller="Kullanicilar" asp-action="Index" class="btn btn-outline-dark w-100 py-3 fw-bold">
+                            👥 Kullanıcılar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

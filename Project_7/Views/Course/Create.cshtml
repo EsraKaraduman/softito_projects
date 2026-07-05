@@ -1,0 +1,73 @@
+@model Project_7.Models.Course
+
+@{
+    ViewData["Title"] = "Yeni Kurs Ekle";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="glass-card">
+            <h2 class="hero-title text-start fs-2 mb-4">Yeni Kurs Ekle</h2>
+
+            <form asp-action="Create" method="post">
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label form-label-custom">Kurs Başlığı</label>
+                    <input asp-for="Title" class="form-control search-input w-100" required />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label form-label-custom">Açıklama</label>
+                    <textarea asp-for="Description" class="form-control search-input w-100" rows="4"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Category" class="form-label form-label-custom">Kategori</label>
+                        <select asp-for="Category" class="form-select search-input w-100" required>
+                            <option value="Painting">Resim</option>
+                            <option value="Guitar">Gitar</option>
+                            <option value="Music">Müzik</option>
+                            <option value="Wood Painting">Ahşap Boyama</option>
+                        </select>
+                        <span asp-validation-for="Category" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="InstructorId" class="form-label form-label-custom">Eğitmen</label>
+                        <select asp-for="InstructorId" class="form-select search-input w-100" asp-items="ViewBag.Instructors">
+                            <option value="">Eğitmen Seçin...</option>
+                        </select>
+                        <span asp-validation-for="InstructorId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Price" class="form-label form-label-custom">Fiyat (TL)</label>
+                        <input asp-for="Price" type="number" step="0.01" class="form-control search-input w-100" required />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Duration" class="form-label form-label-custom">Süre (Örn: 8 Hafta)</label>
+                        <input asp-for="Duration" class="form-control search-input w-100" required />
+                        <span asp-validation-for="Duration" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="ImageUrl" class="form-label form-label-custom">Görsel URL</label>
+                    <input asp-for="ImageUrl" class="form-control search-input w-100" />
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-custom-primary">Kaydet</button>
+                    <a asp-action="Index" class="btn btn-custom-secondary">İptal</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

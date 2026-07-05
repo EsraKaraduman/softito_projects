@@ -1,0 +1,17 @@
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\bin\Debug\net10.0\TicketBooking.Service.deps.json
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\bin\Debug\net10.0\TicketBooking.Service.dll
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\bin\Debug\net10.0\TicketBooking.Service.pdb
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\bin\Debug\net10.0\TicketBooking.Core.dll
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\bin\Debug\net10.0\TicketBooking.Data.dll
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\bin\Debug\net10.0\TicketBooking.Core.pdb
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\bin\Debug\net10.0\TicketBooking.Data.pdb
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\obj\Debug\net10.0\TicketBooking.Service.csproj.AssemblyReference.cache
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\obj\Debug\net10.0\TicketBooking.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\obj\Debug\net10.0\TicketBooking.Service.AssemblyInfoInputs.cache
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\obj\Debug\net10.0\TicketBooking.Service.AssemblyInfo.cs
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\obj\Debug\net10.0\TicketBooking.Service.csproj.CoreCompileInputs.cache
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\obj\Debug\net10.0\TicketBo.81012426.Up2Date
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\obj\Debug\net10.0\TicketBooking.Service.dll
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\obj\Debug\net10.0\refint\TicketBooking.Service.dll
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\obj\Debug\net10.0\TicketBooking.Service.pdb
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Service\obj\Debug\net10.0\ref\TicketBooking.Service.dll

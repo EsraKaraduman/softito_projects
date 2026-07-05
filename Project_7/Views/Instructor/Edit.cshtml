@@ -1,0 +1,51 @@
+@model Project_7.Models.Instructor
+
+@{
+    ViewData["Title"] = "Eğitmen Düzenle";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="glass-card">
+            <h2 class="hero-title text-start fs-2 mb-4">Eğitmen Düzenle</h2>
+
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="mb-3">
+                    <label asp-for="FullName" class="form-label form-label-custom">Ad Soyad</label>
+                    <input asp-for="FullName" class="form-control search-input w-100" required />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Specialty" class="form-label form-label-custom">Uzmanlık Alanı / Branş</label>
+                    <select asp-for="Specialty" class="form-select search-input w-100" required>
+                        <option value="Painting">Resim</option>
+                        <option value="Guitar">Gitar</option>
+                        <option value="Music">Müzik</option>
+                        <option value="Wood Painting">Ahşap Boyama</option>
+                    </select>
+                    <span asp-validation-for="Specialty" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Bio" class="form-label form-label-custom">Biyografi</label>
+                    <textarea asp-for="Bio" class="form-control search-input w-100" rows="4"></textarea>
+                    <span asp-validation-for="Bio" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="ImageUrl" class="form-label form-label-custom">Profil Fotoğrafı URL</label>
+                    <input asp-for="ImageUrl" class="form-control search-input w-100" />
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-custom-primary">Güncelle</button>
+                    <a asp-action="Index" class="btn btn-custom-secondary">İptal</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

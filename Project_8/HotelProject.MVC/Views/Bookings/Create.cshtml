@@ -1,0 +1,60 @@
+@model HotelProject.MVC.Models.Booking
+
+@{
+    ViewData["Title"] = "Yeni Rezervasyon";
+}
+
+<div class="form-container" style="max-width: 600px;">
+    <h2 class="mb-4 text-center"><span class="text-gradient">Yeni Rezervasyon</span></h2>
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+    <form method="post" asp-action="Create">
+        <div class="mb-3">
+            <label class="form-label">Oda Seçimi</label>
+            <select asp-for="RoomId" class="form-select" required>
+                <option value="">-- Lütfen bir oda seçin --</option>
+                @foreach (var room in (List<HotelProject.MVC.Models.Room>)ViewBag.Rooms)
+                {
+                    <option value="@room.Id">No: @room.RoomNumber - @room.RoomType (@room.PricePerNight.ToString("C") / Gece)</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Misafir Adı Soyadı</label>
+            <input type="text" asp-for="GuestName" class="form-control" placeholder="Örn: Ahmet Yılmaz" required />
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">E-posta Adresi</label>
+                <input type="email" asp-for="GuestEmail" class="form-control" placeholder="ahmet@example.com" required />
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Telefon Numarası</label>
+                <input type="tel" asp-for="GuestPhone" class="form-control" placeholder="+90 555 123 4567" required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Giriş Tarihi</label>
+                <input type="date" asp-for="CheckInDate" class="form-control" required />
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Çıkış Tarihi</label>
+                <input type="date" asp-for="CheckOutDate" class="form-control" required />
+            </div>
+        </div>
+        <div class="mb-4">
+            <label class="form-label">Rezervasyon Durumu</label>
+            <select asp-for="BookingStatus" class="form-select" required>
+                <option value="Confirmed">Onaylandı</option>
+                <option value="Cancelled">İptal Edildi</option>
+            </select>
+        </div>
+        <div class="d-flex gap-3">
+            <button type="submit" class="btn btn-primary flex-grow-1">Kaydet</button>
+            <a asp-action="Index" class="btn btn-secondary flex-grow-1 text-center">İptal</a>
+        </div>
+    </form>
+</div>

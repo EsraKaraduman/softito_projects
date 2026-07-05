@@ -1,0 +1,226 @@
+@model TicketBooking.Core.Entities.Ticket
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bilet Detayı #@Model.Id - BiletAl</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            padding: 40px 0;
+        }
+        .invoice-card {
+            background-color: #fff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #e1e8ed;
+            overflow: hidden;
+        }
+        .invoice-header {
+            background-color: #003366;
+            color: #fff;
+            padding: 30px;
+        }
+        .invoice-body {
+            padding: 40px;
+        }
+        .ticket-stub {
+            border: 2px dashed #0056b3;
+            border-radius: 12px;
+            background-color: #f7faff;
+            padding: 24px;
+            position: relative;
+        }
+        .ticket-stub::before, .ticket-stub::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border-radius: 50%;
+            top: 50%;
+            margin-top: -10px;
+        }
+        .ticket-stub::before {
+            left: -12px;
+            border-right: 1px solid #e1e8ed;
+        }
+        .ticket-stub::after {
+            right: -12px;
+            border-left: 1px solid #e1e8ed;
+        }
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            color: #fff;
+        }
+        .logo-text span {
+            color: #0088ff;
+        }
+        .text-navy {
+            color: #003366 !important;
+        }
+        @@media print {
+            body {
+                background-color: #fff;
+                padding: 0;
+            }
+            .invoice-card {
+                box-shadow: none;
+                border: none;
+                max-width: 100%;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="no-print text-center mb-4">
+        <button onclick="window.print()" class="btn btn-primary px-4 py-2 me-2 shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer me-2" viewBox="0 0 16 16">
+                <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
+            </svg>Yazdır / PDF Kaydet
+        </button>
+        <a href="/Ticket/MyTickets" class="btn btn-outline-secondary px-4 py-2">
+            Biletlerime Dön
+        </a>
+    </div>
+
+    <div class="invoice-card">
+        <div class="invoice-header d-flex justify-content-between align-items-center">
+            <div>
+                <span class="logo-text">Bilet<span>Al</span></span>
+            </div>
+            <div class="text-end">
+                <h4 class="mb-0 fw-bold">E-BİLET VE FATURA</h4>
+                <p class="mb-0 opacity-75 fs-7">Bilet No: #@Model.Id</p>
+            </div>
+        </div>
+
+        <div class="invoice-body">
+            <div class="row mb-5">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <span class="text-muted d-block text-uppercase fs-8 tracking-wider">MÜŞTERİ BİLGİLERİ</span>
+                    <h5 class="fw-bold text-navy mb-1">@Model.User?.Username</h5>
+                    <p class="text-muted mb-0">@Model.User?.Email</p>
+                </div>
+                <div class="col-sm-6 text-sm-end">
+                    <span class="text-muted d-block text-uppercase fs-8 tracking-wider">SATIN ALIM TARİHİ</span>
+                    <h5 class="fw-bold text-navy mb-1">@Model.BookingDate.ToString("dd.MM.yyyy HH:mm")</h5>
+                    <p class="text-muted mb-0">Ödeme Yöntemi: Kredi Kartı</p>
+                </div>
+            </div>
+
+            <div class="ticket-stub mb-5">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <span class="badge bg-primary px-3 py-1 rounded-pill mb-2">ETKİNLİK GİRİŞ BİLETİ</span>
+                        <h3 class="fw-bold text-navy mb-3">@Model.Event?.Title</h3>
+                        
+                        <div class="row g-3 fs-7">
+                            <div class="col-sm-6">
+                                <span class="text-muted d-block">Tarih ve Saat:</span>
+                                <strong class="text-navy">@Model.Event?.Date.ToString("dd.MM.yyyy HH:mm")</strong>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="text-muted d-block">Mekan:</span>
+                                <strong class="text-navy">@Model.Event?.Location</strong>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="text-muted d-block">Koltuk Numarası:</span>
+                                <strong class="text-navy">@Model.SeatNumber</strong>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="text-muted d-block">Bilet Adeti:</span>
+                                <strong class="text-navy">@Model.Quantity Adet</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mt-4 mt-md-0 border-start-md">
+                        <div class="d-inline-block p-3 bg-white border rounded">
+                            <div class="d-flex justify-content-center align-items-end mb-1" style="height: 60px;">
+                                <div style="width: 2px; height: 60px; background-color: #000; margin-right: 2px;"></div>
+                                <div style="width: 4px; height: 60px; background-color: #000; margin-right: 2px;"></div>
+                                <div style="width: 1px; height: 60px; background-color: #000; margin-right: 2px;"></div>
+                                <div style="width: 3px; height: 60px; background-color: #000; margin-right: 2px;"></div>
+                                <div style="width: 1px; height: 60px; background-color: #000; margin-right: 2px;"></div>
+                                <div style="width: 4px; height: 60px; background-color: #000; margin-right: 2px;"></div>
+                                <div style="width: 2px; height: 60px; background-color: #000; margin-right: 2px;"></div>
+                                <div style="width: 3px; height: 60px; background-color: #000; margin-right: 2px;"></div>
+                                <div style="width: 1px; height: 60px; background-color: #000; margin-right: 2px;"></div>
+                                <div style="width: 2px; height: 60px; background-color: #000; margin-right: 2px;"></div>
+                                <div style="width: 4px; height: 60px; background-color: #000; margin-right: 2px;"></div>
+                                <div style="width: 1px; height: 60px; background-color: #000; margin-right: 2px;"></div>
+                                <div style="width: 3px; height: 60px; background-color: #000; margin-right: 2px;"></div>
+                                <div style="width: 2px; height: 60px; background-color: #000; margin-right: 2px;"></div>
+                                <div style="width: 4px; height: 60px; background-color: #000;"></div>
+                            </div>
+                            <span class="fs-8 font-monospace text-muted">TB-@Model.Id-@Model.EventId-@Model.UserId</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="fw-bold text-navy mb-3">Hesap Özeti</h5>
+            <table class="table border-bottom">
+                <thead>
+                    <tr class="table-light fs-7">
+                        <th>Açıklama</th>
+                        <th class="text-end">Birim Fiyat</th>
+                        <th class="text-center">Adet</th>
+                        <th class="text-end">Toplam</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="fs-6">
+                        <td>@Model.Event?.Title Giriş Bileti (@Model.SeatNumber)</td>
+                        <td class="text-end">@Model.Event?.Price.ToString("C2")</td>
+                        <td class="text-center">@Model.Quantity</td>
+                        <td class="text-end fw-semibold">@Model.TotalPrice.ToString("C2")</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row justify-content-end mt-4">
+                <div class="col-md-5">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Ara Toplam:</span>
+                        <span>@Model.TotalPrice.ToString("C2")</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">KDV (%20):</span>
+                        <span>Dahil</span>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="fw-bold text-navy mb-0">Toplam Tutar:</h5>
+                        <h4 class="fw-bold text-primary mb-0">@Model.TotalPrice.ToString("C2")</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-top pt-4 mt-5 text-center text-muted fs-8">
+                <p class="mb-1">Bu e-bilet resmi giriş belgesidir. Lütfen etkinlik girişinde barkodu görevliye okutunuz.</p>
+                <p class="mb-0">BiletAl Ltd. Şti. | Destek: destek@biletal.com | Telefon: 0850 123 45 67</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

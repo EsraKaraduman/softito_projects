@@ -1,0 +1,11 @@
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Core\bin\Debug\net10.0\TicketBooking.Core.deps.json
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Core\bin\Debug\net10.0\TicketBooking.Core.dll
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Core\bin\Debug\net10.0\TicketBooking.Core.pdb
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Core\obj\Debug\net10.0\TicketBooking.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Core\obj\Debug\net10.0\TicketBooking.Core.AssemblyInfoInputs.cache
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Core\obj\Debug\net10.0\TicketBooking.Core.AssemblyInfo.cs
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Core\obj\Debug\net10.0\TicketBooking.Core.csproj.CoreCompileInputs.cache
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Core\obj\Debug\net10.0\TicketBooking.Core.dll
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Core\obj\Debug\net10.0\refint\TicketBooking.Core.dll
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Core\obj\Debug\net10.0\TicketBooking.Core.pdb
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Core\obj\Debug\net10.0\ref\TicketBooking.Core.dll

@@ -1,0 +1,74 @@
+@model IEnumerable<HotelProject.MVC.Models.Room>
+
+@{
+    ViewData["Title"] = "Odalarımız";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="page-header m-0"><span class="text-gradient">Odalarımız</span></h1>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Create" class="btn btn-primary">Yeni Oda Ekle</a>
+    }
+</div>
+
+<div class="search-box">
+    <form method="get" asp-action="Index" class="d-flex w-100 gap-3">
+        <input type="text" name="query" class="form-control" placeholder="Oda numarası, tipi veya özellik ara..." value="@ViewBag.Query" />
+        <button type="submit" class="btn btn-primary">Ara</button>
+        @if (!string.IsNullOrEmpty(ViewBag.Query))
+        {
+            <a asp-action="Index" class="btn btn-secondary">Temizle</a>
+        }
+    </form>
+</div>
+
+<div class="row g-4">
+    @foreach (var room in Model)
+    {
+        <div class="col-md-4">
+            <div class="card h-100">
+                @if (!string.IsNullOrEmpty(room.ImageUrl))
+                {
+                    <img src="@room.ImageUrl" class="card-img-top" alt="@room.RoomType" />
+                }
+                else
+                {
+                    <div class="card-img-top d-flex align-items-center justify-content-center bg-secondary" style="height:200px">Görsel Yok</div>
+                }
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="card-title m-0">No: @room.RoomNumber - @room.RoomType</h5>
+                        @if (room.IsAvailable)
+                        {
+                            <span class="badge badge-success">Müsait</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-danger">Dolu</span>
+                        }
+                    </div>
+                    <p class="card-text text-secondary flex-grow-1" style="font-size: 0.9rem">@room.Description</p>
+                    <div class="mt-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold fs-5 text-gradient">@room.PricePerNight.ToString("C") <span style="font-size:0.8rem; font-weight:normal" class="text-secondary">/ Gece</span></span>
+                            @if (room.IsAvailable && User.Identity != null && User.Identity.IsAuthenticated)
+                            {
+                                <a asp-controller="Bookings" asp-action="Create" asp-route-roomId="@room.Id" class="btn btn-primary btn-sm">Rezervasyon Yap</a>
+                            }
+                        </div>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <div class="d-flex gap-2 mt-3 pt-3 border-top border-secondary">
+                                <a asp-action="Edit" asp-route-id="@room.Id" class="btn btn-secondary btn-sm flex-grow-1">Düzenle</a>
+                                <form method="post" asp-action="Delete" asp-route-id="@room.Id" class="flex-grow-1" onsubmit="return confirm('Bu odayı silmek istediğinizden emin misiniz?');">
+                                    <button type="submit" class="btn btn-danger btn-sm w-100">Sil</button>
+                                </form>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

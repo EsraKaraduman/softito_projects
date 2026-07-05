@@ -1,0 +1,39 @@
+﻿@model List<MarketMvcProject.Models.Urun>
+
+<h2>Ürün Listesi</h2>
+
+<form method="get">
+    <label>Kategoriye Göre Filtrele:</label>
+    <select name="kategoriId">
+        <option value="0">Tüm Kategoriler</option>
+        @foreach (var k in ViewBag.Kategoriler)
+        {
+            <option value="@k.KategoriId">@k.KategoriAdi</option>
+        }
+    </select>
+    <button type="submit">Filtrele</button>
+</form>
+
+<a href="/Urun/Create">Yeni Ürün Ekle</a>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Ürün Adı</th>
+        <th>Fiyat</th>
+        <th>Kategori</th>
+        <th>İşlemler</th>
+    </tr>
+
+    @foreach (var u in Model)
+    {
+        <tr>
+            <td>@u.UrunAdi</td>
+            <td>@u.Fiyat</td>
+            <td>@u.Kategori?.KategoriAdi</td>
+            <td>
+                <a href="/Urun/Edit/@u.UrunId">Düzenle</a> |
+                <a href="/Urun/Delete/@u.UrunId">Sil</a>
+            </td>
+        </tr>
+    }
+</table>

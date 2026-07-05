@@ -1,0 +1,16 @@
+﻿@model MarketMvcProject.Models.Musteri
+
+<h2>Müşteri Düzenle</h2>
+
+<form method="post">
+    <input type="hidden" name="MusteriId" value="@Model.MusteriId" />
+
+    <label>Ad Soyad</label><br />
+    <input type="text" name="AdSoyad" value="@Model.AdSoyad" /><br /><br />
+
+    <label>Email</label><br />
+    <input type="email" name="Email" value="@Model.Email" /><br /><br />
+
+    <button type="submit">Güncelle</button>
+</form>
+

@@ -1,0 +1,30 @@
+﻿@model MarketMvcProject.Models.Siparis
+
+<h2>Sipariş Düzenle</h2>
+
+<form method="post">
+    <input type="hidden" name="SiparisId" value="@Model.SiparisId" />
+
+    <label>Müşteri</label><br />
+    <select name="MusteriId">
+        @foreach (var m in ViewBag.Musteriler)
+        {
+            <option value="@m.MusteriId" selected="@(m.MusteriId == Model.MusteriId)">
+                @m.AdSoyad
+            </option>
+        }
+    </select><br /><br />
+
+    <label>Ürün</label><br />
+    <select name="UrunId">
+        @foreach (var u in ViewBag.Urunler)
+        {
+            <option value="@u.UrunId" selected="@(u.UrunId == Model.UrunId)">
+                @u.UrunAdi
+            </option>
+        }
+    </select><br /><br />
+
+    <button type="submit">Güncelle</button>
+</form>
+

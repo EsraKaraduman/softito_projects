@@ -1,0 +1,180 @@
+@model DondurmacfUI.Models.RaporViewModel
+
+@{
+    ViewData["Title"] = "Raporlar";
+}
+
+<div class="mb-4">
+    <h1 class="page-title">Sistem Raporları</h1>
+    <p class="text-muted">Rapor aşağıda listelenmiştir.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card card-custom p-4 h-100 border-0">
+            <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                    <h3 class="font-weight-bold text-dark mb-3">👤 Rapor 1:</h3>
+                    <p class="text-muted small">Dondurma türlerinin hangi ürün grubuna dahil olduğunu gösteren ilişkisel sorgu.</p>
+                    <div class="table-responsive">
+                        <table class="table table-custom table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Tür Adı</th>
+                                    <th>Kategori (Ürün)</th>
+                                    <th>Fiyat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Rapor1)
+                                {
+                                    <tr>
+                                        <td>@item.TurAdi</td>
+                                        <td><span class="badge-custom-secondary">@item.UrunAdi</span></td>
+                                        <td class="text-success font-weight-bold">@item.Fiyat ₺</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="card card-custom p-4 h-100 border-0">
+            <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                    <h3 class="font-weight-bold text-dark mb-3">👤 Rapor 2:</h3>
+                    <p class="text-muted small">Her dondurma türünü hangi personelin eklediğini gösteren rapor.</p>
+                    <div class="table-responsive">
+                        <table class="table table-custom table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Tür Adı</th>
+                                    <th>Ekleyen Personel</th>
+                                    <th>Fiyat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Rapor2)
+                                {
+                                    <tr>
+                                        <td>@item.TurAdi</td>
+                                        <td><span class="text-muted">👤 @item.Olusturan</span></td>
+                                        <td class="text-success font-weight-bold">@item.Fiyat ₺</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card card-custom p-4 border-0">
+            <div class="card-body">
+                <h3 class="font-weight-bold text-dark mb-3">🍦 Rapor 3:</h3>
+                <p class="text-muted small">Tür, Ürün ve Kullanıcı tabloları.</p>
+                <div class="table-responsive">
+                    <table class="table table-custom">
+                        <thead>
+                            <tr>
+                                <th>Dondurma Türü</th>
+                                <th>Kategori</th>
+                                <th>Ekleyen Personel</th>
+                                <th>Fiyat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Rapor3)
+                            {
+                                <tr>
+                                    <td class="font-weight-semibold text-dark">@item.TurAdi</td>
+                                    <td><span class="badge-custom-secondary">@item.UrunAdi</span></td>
+                                    <td><span class="text-muted">👤 @item.Olusturan</span></td>
+                                    <td class="text-success font-weight-bold">@item.Fiyat ₺</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card card-custom p-4 h-100 border-0">
+            <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                    <h3 class="font-weight-bold text-dark mb-3">📁 Rapor 4:</h3>
+                    <p class="text-muted small">Ürün gruplarına göre dondurma sayıları ve ortalama fiyat analizi.</p>
+                    <div class="table-responsive">
+                        <table class="table table-custom table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Kategori Adı</th>
+                                    <th>Tür Sayısı</th>
+                                    <th>Ortalama Fiyat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Rapor4)
+                                {
+                                    <tr>
+                                        <td class="font-weight-semibold">@item.UrunAdi</td>
+                                        <td><span class="badge bg-secondary rounded-pill">@item.TurSayisi Adet</span></td>
+                                        <td class="text-primary font-weight-bold">@item.OrtalamaFiyat.ToString("F2") ₺</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="card card-custom p-4 h-100 border-0">
+            <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                    <h3 class="font-weight-bold text-dark mb-3">⭐ Rapor 5:</h3>
+                    <p class="text-muted small">Fiyatı en yüksek olan premium 3 dondurma.</p>
+                    <div class="table-responsive">
+                        <table class="table table-custom table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Sıra</th>
+                                    <th>Dondurma Türü</th>
+                                    <th>Kategori</th>
+                                    <th>Fiyat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int rank = 1; }
+                                @foreach (var item in Model.Rapor5)
+                                {
+                                    <tr>
+                                        <td><span class="badge bg-warning text-dark font-weight-bold rounded-circle">@rank</span></td>
+                                        <td class="font-weight-semibold text-dark">@item.TurAdi</td>
+                                        <td><span class="badge-custom-secondary">@item.UrunAdi</span></td>
+                                        <td class="text-success font-weight-bold">@item.Fiyat ₺</td>
+                                    </tr>
+                                    rank++;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

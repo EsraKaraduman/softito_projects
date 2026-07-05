@@ -1,0 +1,19 @@
+﻿@model MarketMvcProject.Models.Kategori
+@{
+    Layout = "_AdminLayout";
+}
+
+<h2>Kategori Düzenle</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="KategoriId" />
+
+    <div class="form-group">
+        <label asp-for="KategoriAdi"></label>
+        <input asp-for="KategoriAdi" class="form-control" />
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+</form>

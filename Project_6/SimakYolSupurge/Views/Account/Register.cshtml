@@ -1,0 +1,88 @@
+@model SimakYolSupurge.Models.RegisterViewModel
+@{
+    ViewData["Title"] = "Kayıt Ol";
+}
+
+<div class="auth-page">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-card-simak">
+                    <div class="text-center mb-4">
+                        <i class="bi bi-person-plus text-success fs-1"></i>
+                        <h2 class="fw-bold mt-2 text-success">Kayıt Ol</h2>
+                        <p class="text-muted">Simak Yol platformuna yeni hesap oluşturun.</p>
+                    </div>
+
+                    <form asp-action="Register" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Username" class="form-label fw-semibold"></label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted"><i class="bi bi-person"></i></span>
+                                    <input asp-for="Username" class="form-control border-start-0 ps-0" placeholder="Kullanıcı adı" />
+                                </div>
+                                <span asp-validation-for="Username" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Email" class="form-label fw-semibold"></label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted"><i class="bi bi-envelope"></i></span>
+                                    <input asp-for="Email" class="form-control border-start-0 ps-0" placeholder="E-posta adresi" />
+                                </div>
+                                <span asp-validation-for="Email" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Password" class="form-label fw-semibold"></label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted"><i class="bi bi-lock"></i></span>
+                                    <input asp-for="Password" class="form-control border-start-0 ps-0" placeholder="Şifreniz (Min 6 Karakter)" />
+                                </div>
+                                <span asp-validation-for="Password" class="text-danger small"></span>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ConfirmPassword" class="form-label fw-semibold"></label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0 text-muted"><i class="bi bi-lock-fill"></i></span>
+                                    <input asp-for="ConfirmPassword" class="form-control border-start-0 ps-0" placeholder="Şifre onayı" />
+                                </div>
+                                <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Role" class="form-label fw-semibold"></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="bi bi-shield-lock"></i></span>
+                                <select asp-for="Role" class="form-select">
+                                    <option value="User">Müşteri (Standart Kullanıcı)</option>
+                                    <option value="Admin">Yönetici (Admin)</option>
+                                </select>
+                            </div>
+                            <span asp-validation-for="Role" class="text-danger small"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary-simak w-100 py-2.5 mb-3">
+                            <i class="bi bi-person-plus-fill me-2"></i> Kayıt İşlemini Tamamla
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <p class="text-muted mb-0">Zaten hesabınız var mı? <a asp-action="Login" class="text-success fw-bold text-decoration-none">Giriş Yapın</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

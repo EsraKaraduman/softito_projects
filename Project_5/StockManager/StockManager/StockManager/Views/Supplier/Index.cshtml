@@ -1,0 +1,233 @@
+@{
+    ViewData["Title"] = "Tedarikçi Yönetimi (Admin)";
+    ViewData["ActivePage"] = "Suppliers";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="text-white fw-bold mb-1">
+            <i class="fa-solid fa-truck-field text-primary me-2"></i>Tedarikçi Yönetimi
+        </h2>
+        <p class="text-muted small">Tedarikçi firmaların ve yetkili iletişim kişilerinin yönetimi.</p>
+    </div>
+    <button class="btn btn-premium" onclick="openAddModal()">
+        <i class="fa-solid fa-plus me-2"></i>Yeni Tedarikçi Ekle
+    </button>
+</div>
+
+<div class="card-premium p-4">
+    <div class="table-responsive" id="tableContainer">
+    </div>
+</div>
+
+<div class="modal fade" id="supplierModal" tabindex="-1" aria-labelledby="supplierModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-content-premium">
+            <div class="modal-header modal-header-premium">
+                <h5 class="modal-title text-white fw-bold" id="supplierModalLabel">Tedarikçi Ekle</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Kapat"></button>
+            </div>
+            <form id="supplierForm" onsubmit="saveSupplier(event)">
+                <div class="modal-body p-4">
+                    <input type="hidden" id="supplierId" name="Id" value="0" />
+                    
+                    <div class="mb-3">
+                        <label for="supplierName" class="form-label text-muted small">Firma Adı</label>
+                        <input type="text" class="form-control form-control-premium" id="supplierName" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="supplierContact" class="form-label text-muted small">Yetkili İletişim Kişisi</label>
+                        <input type="text" class="form-control form-control-premium" id="supplierContact" required />
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="supplierEmail" class="form-label text-muted small">E-posta</label>
+                            <input type="email" class="form-control form-control-premium" id="supplierEmail" required />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="supplierPhone" class="form-label text-muted small">Telefon</label>
+                            <input type="text" class="form-control form-control-premium" id="supplierPhone" required />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="supplierAddress" class="form-label text-muted small">Adres</label>
+                        <textarea class="form-control form-control-premium" id="supplierAddress" rows="2" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer modal-footer-premium">
+                    <button type="button" class="btn btn-secondary-premium" data-bs-dismiss="modal">İptal</button>
+                    <button type="submit" class="btn btn-premium">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        let dataTableInstance = null;
+        const supplierModal = new bootstrap.Modal(document.getElementById('supplierModal'));
+
+        document.addEventListener("DOMContentLoaded", function() {
+            loadSuppliers();
+        });
+
+        function loadSuppliers() {
+            $.ajax({
+                url: '/Supplier/GetList',
+                type: 'GET',
+                dataType: 'json',
+                success: function(suppliers) {
+                    let tableHtml = `
+                        <table id="suppliersTable" class="table table-dark table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Firma Adı</th>
+                                    <th>Yetkili Kişi</th>
+                                    <th>E-posta</th>
+                                    <th>Telefon</th>
+                                    <th>Adres</th>
+                                    <th class="text-end">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    `;
+
+                    suppliers.forEach(s => {
+                        tableHtml += `
+                            <tr>
+                                <td class="text-white fw-semibold">${escapeHtml(s.name)}</td>
+                                <td>${escapeHtml(s.contactPerson)}</td>
+                                <td><a href="mailto:${escapeHtml(s.email)}" class="text-info text-decoration-none">${escapeHtml(s.email)}</a></td>
+                                <td>${escapeHtml(s.phone)}</td>
+                                <td class="text-muted small">${escapeHtml(s.address)}</td>
+                                <td class="text-end">
+                                    <button class="btn btn-outline-info btn-sm me-1 rounded-3" onclick="editSupplier(${s.id})">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger btn-sm rounded-3" onclick="deleteSupplier(${s.id})">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `;
+                    });
+
+                    tableHtml += `
+                            </tbody>
+                        </table>
+                    `;
+
+                    document.getElementById('tableContainer').innerHTML = tableHtml;
+
+                    dataTableInstance = new simpleDatatables.DataTable("#suppliersTable", {
+                        searchable: true,
+                        fixedHeight: false,
+                        perPage: 10,
+                        labels: {
+                            placeholder: "Ara...",
+                            perPage: "tedarikçi göster",
+                            noRows: "Kayıt bulunamadı",
+                            info: "{rows} tedarikçiden {start} ile {end} arası gösteriliyor",
+                        }
+                    });
+                },
+                error: function() {
+                    showToast("Tedarikçi listesi yüklenirken hata oluştu!", "danger");
+                }
+            });
+        }
+
+        function openAddModal() {
+            document.getElementById('supplierModalLabel').innerText = "Yeni Tedarikçi Ekle";
+            document.getElementById('supplierId').value = "0";
+            document.getElementById('supplierForm').reset();
+            supplierModal.show();
+        }
+
+        function editSupplier(id) {
+            $.ajax({
+                url: `/Supplier/GetById/${id}`,
+                type: 'GET',
+                success: function(supplier) {
+                    document.getElementById('supplierModalLabel').innerText = "Tedarikçi Düzenle";
+                    document.getElementById('supplierId').value = supplier.id;
+                    document.getElementById('supplierName').value = supplier.name;
+                    document.getElementById('supplierContact').value = supplier.contactPerson;
+                    document.getElementById('supplierEmail').value = supplier.email;
+                    document.getElementById('supplierPhone').value = supplier.phone;
+                    document.getElementById('supplierAddress').value = supplier.address;
+                    
+                    supplierModal.show();
+                },
+                error: function() {
+                    showToast("Tedarikçi bilgileri alınirken hata oluştu!", "danger");
+                }
+            });
+        }
+
+        function saveSupplier(e) {
+            e.preventDefault();
+
+            const supplier = {
+                Id: parseInt(document.getElementById('supplierId').value),
+                Name: document.getElementById('supplierName').value,
+                ContactPerson: document.getElementById('supplierContact').value,
+                Email: document.getElementById('supplierEmail').value,
+                Phone: document.getElementById('supplierPhone').value,
+                Address: document.getElementById('supplierAddress').value
+            };
+
+            $.ajax({
+                url: '/Supplier/Save',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(supplier),
+                success: function(res) {
+                    if (res.success) {
+                        showToast(res.message, "success");
+                        supplierModal.hide();
+                        loadSuppliers();
+                    } else {
+                        showToast(res.message, "danger");
+                    }
+                },
+                error: function() {
+                    showToast("İşlem gerçekleştirilirken hata oluştu!", "danger");
+                }
+            });
+        }
+
+        function deleteSupplier(id) {
+            if (confirm("Bu tedarikçiyi silmek istediğinize emin misiniz?")) {
+                $.ajax({
+                    url: `/Supplier/Delete/${id}`,
+                    type: 'POST',
+                    success: function(res) {
+                        if (res.success) {
+                            showToast(res.message, "success");
+                            loadSuppliers();
+                        } else {
+                            showToast(res.message, "danger");
+                        }
+                    },
+                    error: function() {
+                        showToast("Tedarikçi silinirken hata oluştu!", "danger");
+                    }
+                });
+            }
+        }
+
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    </script>
+}

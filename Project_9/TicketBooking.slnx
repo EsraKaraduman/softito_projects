@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="TicketBooking.Core/TicketBooking.Core.csproj" />
+  <Project Path="TicketBooking.Data/TicketBooking.Data.csproj" />
+  <Project Path="TicketBooking.Service/TicketBooking.Service.csproj" />
+  <Project Path="TicketBooking.Web/TicketBooking.Web.csproj" />
+</Solution>

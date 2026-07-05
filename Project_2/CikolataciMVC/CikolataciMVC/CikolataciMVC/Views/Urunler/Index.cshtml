@@ -1,0 +1,57 @@
+@model IEnumerable<CikolataciMVC.Models.Urunler>
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Ürün Listesi</h2>
+
+<form method="get" class="d-flex align-items-center gap-2 mb-3">
+    <select name="kategoriId" class="form-select" style="width:250px;">
+        <option value="">Tümü (Kategoriler)</option>
+        @foreach (var k in ViewBag.Kategoriler)
+        {
+            if (Context.Request.Query["kategoriId"] == k.Id.ToString())
+            {
+                <option value="@k.Id" selected>@k.KategoriAdi</option>
+            }
+            else
+            {
+                <option value="@k.Id">@k.KategoriAdi</option>
+            }
+        }
+    </select>
+    <button class="btn btn-primary">Filtrele</button>
+</form>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Yeni Ürün</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ürün Adı</th>
+            <th>Fiyat</th>
+            <th>Kategori</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Id</td>
+                <td>@u.UrunAdi</td>
+                <td>@u.Fiyat</td>
+                <td>@u.Kategori.KategoriAdi</td>
+                <td>
+                    <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@u.Id">Düzenle</a>
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@u.Id">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

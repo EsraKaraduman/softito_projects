@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "Giriş Yap";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <div class="glass-card">
+            <h2 class="hero-title text-start fs-2 mb-4">Giriş Yap</h2>
+
+            <form asp-controller="Account" asp-action="Login" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label form-label-custom">E-posta Adresi</label>
+                    <input type="email" id="email" name="email" class="form-control search-input w-100" required />
+                </div>
+
+                <div class="mb-4">
+                    <label for="password" class="form-label form-label-custom">Şifre</label>
+                    <input type="password" id="password" name="password" class="form-control search-input w-100" required />
+                </div>
+
+                <button type="submit" class="btn btn-custom-primary w-100 py-2 rounded-3 mb-3">Giriş Yap</button>
+
+                <p class="text-center text-muted mb-0">Hesabınız yok mu? <a asp-controller="Account" asp-action="Register">Kayıt Ol</a></p>
+            </form>
+        </div>
+    </div>
+</div>

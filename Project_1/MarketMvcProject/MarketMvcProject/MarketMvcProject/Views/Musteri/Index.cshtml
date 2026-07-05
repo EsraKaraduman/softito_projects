@@ -1,0 +1,31 @@
+﻿@model List<MarketMvcProject.Models.Musteri>
+
+<h2>Müşteri Listesi</h2>
+
+<form method="get">
+    <input type="text" name="searchString" placeholder="Müşteri ara..." />
+    <button type="submit">Ara</button>
+</form>
+
+<a href="/Musteri/Create">Yeni Müşteri Ekle</a>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Ad Soyad</th>
+        <th>Email</th>
+        <th>İşlemler</th>
+    </tr>
+
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td>@m.AdSoyad</td>
+            <td>@m.Email</td>
+            <td>
+                <a href="/Musteri/Edit/@m.MusteriId">Düzenle</a> |
+                <a href="/Musteri/Delete/@m.MusteriId">Sil</a>
+            </td>
+        </tr>
+    }
+</table>
+

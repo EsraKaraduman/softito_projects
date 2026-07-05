@@ -1,0 +1,62 @@
+﻿@model List<MarketMvcProject.Models.Urun>
+
+@{
+    ViewData["Title"] = "Ürün Raporu";
+}
+
+<h2>Ürün Raporu</h2>
+<hr />
+
+<h4>Genel Bilgiler</h4>
+<ul>
+    <li>Toplam Ürün: @ViewBag.ToplamUrun</li>
+    <li>Toplam Fiyat: @ViewBag.ToplamFiyat</li>
+    <li>En Pahalı Ürün: @ViewBag.EnPahali?.UrunAdi (@ViewBag.EnPahali?.Fiyat)</li>
+    <li>En Ucuz Ürün: @ViewBag.EnUcuz?.UrunAdi (@ViewBag.EnUcuz?.Fiyat)</li>
+</ul>
+
+<hr />
+
+<h4>Kategori Bazlı Rapor</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Kategori</th>
+            <th>Adet</th>
+            <th>Toplam Fiyat</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.KategoriGruplu)
+        {
+            <tr>
+                <td>@item.Kategori</td>
+                <td>@item.Adet</td>
+                <td>@item.Toplam</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<h4>Ürün Listesi (JOIN)</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Ürün Adı</th>
+            <th>Fiyat</th>
+            <th>Kategori</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.UrunAdi</td>
+                <td>@u.Fiyat</td>
+                <td>@u.Kategori?.KategoriAdi</td>
+            </tr>
+        }
+    </tbody>
+</table>

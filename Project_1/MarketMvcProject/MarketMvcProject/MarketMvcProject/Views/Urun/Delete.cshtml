@@ -1,0 +1,10 @@
+﻿@model MarketMvcProject.Models.Urun
+
+<h2>Ürün Sil</h2>
+
+<p>@Model.UrunAdi ürününü silmek istediğine emin misin?</p>
+
+<form method="post">
+    <input type="hidden" name="UrunId" value="@Model.UrunId" />
+    <button type="submit">Sil</button>
+</form>

@@ -1,0 +1,15 @@
+﻿@model CikolataciMVC.Models.Kullanicilar
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Kullanıcı Sil</h2>
+
+<p><strong>@Model.KullaniciAdi</strong> adlı kullanıcıyı silmek istiyor musun?</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button class="btn btn-danger">Sil</button>
+    <a class="btn btn-secondary" asp-action="Index">Vazgeç</a>
+</form>

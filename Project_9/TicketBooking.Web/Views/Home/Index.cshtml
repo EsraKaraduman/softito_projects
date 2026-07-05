@@ -1,0 +1,145 @@
+@model TicketBooking.Web.Models.HomeViewModel
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="hero-section text-center text-white py-5 mb-5">
+    <div class="container py-3">
+        <h1 class="display-4 fw-bold mb-3">En Popüler Etkinlikleri Keşfedin</h1>
+        <p class="lead mb-4">Konser, tiyatro, sinema ve spor etkinlikleri için biletinizi hemen ayırtın.</p>
+        
+        <form asp-controller="Home" asp-action="Index" method="get" class="search-form mx-auto" style="max-width: 700px;">
+            <input type="hidden" name="c" value="@Model.SelectedCategoryId" />
+            <div class="input-group input-group-lg shadow-sm">
+                <input type="text" name="q" class="form-control border-0 px-4" placeholder="Etkinlik, mekan veya sanatçı arayın..." value="@Model.SearchQuery" />
+                <button class="btn btn-primary px-4 fw-semibold" type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search me-2" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>Ara
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="category-tabs-container mb-4 text-center">
+        <div class="d-inline-flex gap-2 flex-wrap justify-content-center p-1 bg-light rounded-pill">
+            <a asp-action="Index" asp-route-q="@Model.SearchQuery" asp-route-c="" class="btn category-tab-btn rounded-pill px-4 py-2 @(Model.SelectedCategoryId == null ? "active-tab" : "text-muted")">
+                Tümü
+            </a>
+            @foreach (var cat in Model.Categories)
+            {
+                <a asp-action="Index" asp-route-q="@Model.SearchQuery" asp-route-c="@cat.Id" class="btn category-tab-btn rounded-pill px-4 py-2 @(Model.SelectedCategoryId == cat.Id ? "active-tab" : "text-muted")">
+                    @cat.Name
+                </a>
+            }
+        </div>
+    </div>
+
+    <div class="events-section">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="fw-bold text-navy">Öne Çıkan Etkinlikler</h3>
+            @if (!string.IsNullOrEmpty(Model.SearchQuery) || Model.SelectedCategoryId.HasValue)
+            {
+                <a asp-action="Index" class="text-decoration-none text-primary fw-semibold d-flex align-items-center">
+                    Filtreleri Temizle
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-1" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                </a>
+            }
+        </div>
+
+        @if (!Model.Events.Any())
+        {
+            <div class="no-results-card text-center py-5 shadow-sm rounded-4 border bg-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="text-muted mb-3" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M5.255 5.786a.237.237 0 0 0-.241.247c0 .145.12.253.253.253H9c.137 0 .25-.11.25-.247a.242 0 0 0-.241-.253H5.255z"/>
+                </svg>
+                <h4>Aramanıza uygun etkinlik bulunamadı.</h4>
+                <p class="text-muted">Farklı anahtar kelimelerle arama yapmayı veya filtreleri sıfırlamayı deneyebilirsiniz.</p>
+                <a asp-action="Index" class="btn btn-primary mt-3 px-4">Tüm Etkinlikleri Göster</a>
+            </div>
+        }
+        else
+        {
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                @foreach (var ev in Model.Events)
+                {
+                    <div class="col">
+                        <div class="card h-100 event-card shadow-sm border-0 rounded-4 overflow-hidden bg-white">
+                            <span class="badge position-absolute top-0 end-0 m-3 z-1 px-3 py-2 rounded-pill shadow-sm fs-7 @(ev.CategoryId == 1 ? "bg-danger" : ev.CategoryId == 2 ? "bg-warning text-dark" : ev.CategoryId == 3 ? "bg-success" : "bg-info text-white")">
+                                @(ev.Category?.Name ?? "Etkinlik")
+                            </span>
+                            
+                            <div class="event-image-container position-relative bg-light-blue d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <div class="text-center p-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="text-primary opacity-50 mb-2" viewBox="0 0 16 16">
+                                        <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                    </svg>
+                                    <h5 class="fw-bold text-navy mb-0">@ev.Title</h5>
+                                </div>
+                            </div>
+                            
+                            <div class="card-body p-4 d-flex flex-column">
+                                <h5 class="card-title fw-bold text-navy mb-3">@ev.Title</h5>
+                                
+                                <p class="card-text text-muted mb-4 fs-6 flex-grow-1">
+                                    @(ev.Description.Length > 100 ? ev.Description.Substring(0, 97) + "..." : ev.Description)
+                                </p>
+                                
+                                <div class="event-details-meta border-top pt-3 mb-4">
+                                    <div class="d-flex align-items-center mb-2 text-muted fs-7">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event me-2 text-primary" viewBox="0 0 16 16">
+                                            <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                                        </svg>
+                                        <span>@ev.Date.ToString("dd MMMM yyyy, dddd HH:mm")</span>
+                                    </div>
+                                    <div class="d-flex align-items-center text-muted fs-7">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt me-2 text-primary" viewBox="0 0 16 16">
+                                            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                        </svg>
+                                        <span class="text-truncate">@ev.Location</span>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mt-auto border-top pt-3">
+                                    <div>
+                                        <span class="text-muted fs-8 d-block">Bilet Fiyatı</span>
+                                        <span class="fs-4 fw-bold text-navy">@ev.Price.ToString("C2")</span>
+                                    </div>
+                                    
+                                    @if (!User.IsInRole("Admin"))
+                                    {
+                                        @if (ev.AvailableSeats > 0)
+                                        {
+                                            <a asp-controller="Ticket" asp-action="Book" asp-route-id="@ev.Id" class="btn btn-primary px-4 py-2 rounded-3 fw-semibold shadow-sm card-action-btn">
+                                                Bilet Al
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-secondary px-4 py-2 rounded-3 fw-semibold" disabled>
+                                                Tükendi
+                                            </button>
+                                        }
+                                    }
+                                </div>
+                                <div class="text-muted fs-8 mt-2 text-end">
+                                    Kalan Kapasite: <strong>@ev.AvailableSeats / @ev.Capacity</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

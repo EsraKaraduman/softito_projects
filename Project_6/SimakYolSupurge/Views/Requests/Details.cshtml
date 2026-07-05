@@ -1,0 +1,75 @@
+@model SimakYolSupurge.Models.Request
+@{
+    ViewData["Title"] = "Talep Detayları";
+}
+
+<div class="page-header-simak">
+    <div class="container">
+        <h1 class="page-title mb-1">Talep Detayı</h1>
+        <p class="text-muted mb-0">Müşteriye ait kiralama veya satın alma talep kartı detayları.</p>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="form-card-simak">
+                <div class="d-flex justify-content-between align-items-start border-bottom pb-3 mb-4">
+                    <div>
+                        <span class="text-muted small">Talep Kartı #@Model.Id</span>
+                        <h2 class="fw-bold text-success mt-1">@Model.CustomerName</h2>
+                    </div>
+                    <span class="badge px-3 py-2 fs-6 rounded-pill @(Model.Status == "Onaylandı" ? "bg-success" : Model.Status == "Reddedildi" ? "bg-danger" : "bg-warning text-dark")">
+                        @Model.Status
+                    </span>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-md-6">
+                        <div class="p-3 border rounded-3 h-100">
+                            <span class="text-muted d-block small mb-1">Müşteri Bilgileri</span>
+                            <div class="mb-2">
+                                <i class="bi bi-person me-2 text-success"></i><strong>Adı:</strong> @Model.CustomerName
+                            </div>
+                            <div class="mb-2">
+                                <i class="bi bi-envelope me-2 text-success"></i><strong>E-posta:</strong> @Model.CustomerEmail
+                            </div>
+                            <div>
+                                <i class="bi bi-telephone me-2 text-success"></i><strong>Telefon:</strong> @Model.CustomerPhone
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-3 border rounded-3 h-100">
+                            <span class="text-muted d-block small mb-1">Talep Detayları</span>
+                            <div class="mb-2">
+                                <i class="bi bi-truck me-2 text-success"></i><strong>Araç Modeli:</strong> @Model.VehicleModel
+                            </div>
+                            <div class="mb-2">
+                                <i class="bi bi-tag me-2 text-success"></i><strong>Talep Türü:</strong> @Model.RequestType
+                            </div>
+                            <div>
+                                <i class="bi bi-calendar-event me-2 text-success"></i><strong>Tarih:</strong> @Model.RequestDate.ToString("dd.MM.yyyy")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold text-dark"><i class="bi bi-chat-left-quote me-2 text-success"></i> Müşteri Notları</h5>
+                    <p class="text-muted bg-light p-3 rounded-3 mt-2" style="white-space: pre-line;">@(string.IsNullOrEmpty(Model.Notes) ? "Not girilmemiş." : Model.Notes)</p>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary-simak px-4">
+                        <i class="bi bi-pencil me-2"></i> Talebi Güncelle
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger px-4">
+                        <i class="bi bi-trash me-2"></i> Sil
+                    </a>
+                    <a asp-action="Index" class="btn btn-outline-secondary px-4">Listeye Dön</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

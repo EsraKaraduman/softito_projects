@@ -1,0 +1,309 @@
+:root {
+    --primary-blue: #0066cc;
+    --primary-hover: #0052a3;
+    --navy: #002244;
+    --navy-light: #e8f2fc;
+    --light-blue: #f0f7ff;
+    --neutral-light: #f8fafc;
+    --white: #ffffff;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --success: #10b981;
+    --danger: #ef4444;
+}
+
+body {
+    font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--neutral-light);
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content-wrapper {
+    flex: 1 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+}
+
+.text-navy {
+    color: var(--navy) !important;
+}
+
+.bg-navy {
+    background-color: var(--navy) !important;
+}
+
+.bg-light-blue {
+    background-color: var(--light-blue) !important;
+}
+
+.bg-navy-light {
+    background-color: var(--navy-light) !important;
+}
+
+.bg-success-light {
+    background-color: #d1fae5 !important;
+}
+
+.bg-danger-light {
+    background-color: #fee2e2 !important;
+}
+
+.fs-7 {
+    font-size: 0.875rem;
+}
+
+.fs-8 {
+    font-size: 0.75rem;
+}
+
+.fs-9 {
+    font-size: 0.65rem;
+}
+
+.fw-extrabold {
+    font-weight: 800;
+}
+
+.tracking-wider {
+    letter-spacing: 0.05em;
+}
+
+.logo-brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.logo-brand span {
+    color: var(--primary-blue);
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    transition: all 0.25s ease-in-out;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+}
+
+.btn-custom-solid {
+    background-color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+    color: var(--white);
+    transition: all 0.25s ease;
+}
+
+.btn-custom-solid:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: var(--white);
+    transform: translateY(-1px);
+}
+
+.btn-custom-outline {
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    transition: all 0.25s ease;
+}
+
+.btn-custom-outline:hover {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
+}
+
+.user-avatar-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.category-tab-btn {
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.category-tab-btn:hover {
+    color: var(--primary-blue);
+}
+
+.active-tab {
+    background-color: var(--primary-blue) !important;
+    color: var(--white) !important;
+    box-shadow: 0 4px 10px rgba(0, 102, 204, 0.2);
+}
+
+.hero-section {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--primary-blue) 100%);
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 10px 30px rgba(0, 34, 68, 0.1);
+}
+
+.search-form .form-control {
+    border-radius: 12px 0 0 12px;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.search-form .btn {
+    border-radius: 0 12px 12px 0;
+}
+
+.event-card {
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.event-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(0, 34, 68, 0.08) !important;
+}
+
+.card-action-btn {
+    transition: all 0.2s ease;
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(80vh - 80px);
+    padding: 20px;
+}
+
+.auth-card {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 10px 35px rgba(0, 34, 68, 0.05);
+    padding: 40px;
+    width: 100%;
+    max-width: 480px;
+    border: 1px solid var(--border-color);
+}
+
+.auth-header h2 {
+    color: var(--navy);
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.auth-header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--navy);
+    margin-bottom: 6px;
+}
+
+.form-control, .form-select {
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
+    outline: none;
+}
+
+.btn-auth {
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.auth-link {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.auth-link:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+.alert-danger-custom {
+    background-color: #fee2e2;
+    border-color: #fca5a5;
+    color: #b91c1c;
+    border-radius: 8px;
+    padding: 12px 16px;
+}
+
+.footer {
+    background-color: var(--navy);
+    color: rgba(255, 255, 255, 0.8);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hover-white {
+    transition: color 0.2s ease;
+}
+
+.hover-white:hover {
+    color: var(--white) !important;
+}
+
+.border-end-dashed {
+    border-right: 2px dashed #cbd5e1;
+}
+
+@media (max-width: 575px) {
+    .border-end-dashed {
+        border-right: none;
+        border-bottom: 2px dashed #cbd5e1;
+    }
+}
+
+.ticket-item-card {
+    transition: all 0.2s ease;
+}
+
+.ticket-item-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 34, 68, 0.06) !important;
+}
+
+.dropdown-menu-item:hover {
+    background-color: var(--light-blue) !important;
+    color: var(--primary-blue) !important;
+}
+
+.table th {
+    font-weight: 600;
+    color: var(--navy);
+    background-color: #f1f5f9;
+}
+
+.table td {
+    padding: 16px 12px;
+}

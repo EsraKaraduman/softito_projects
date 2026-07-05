@@ -1,0 +1,134 @@
+@model IEnumerable<HotelProject.MVC.Models.Booking>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Rezervasyon Raporu - Luxora Resort</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 15px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .header p {
+            margin: 5px 0 0 0;
+            color: #666;
+        }
+        .report-info {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            font-size: 13px;
+        }
+        .table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 7px;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+        .badge-success {
+            background-color: #e6f4ea;
+            color: #137333;
+        }
+        .badge-danger {
+            background-color: #fce8e6;
+            color: #c5221f;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Luxora Resort Otel Rezervasyon Raporu</h1>
+        <p>Tarih: @DateTime.Now.ToString("dd.MM.yyyy HH:mm")</p>
+    </div>
+
+    <div class="report-info">
+        <strong>Toplam Rezervasyon Sayısı:</strong> @Model.Count()
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Misafir Adı</th>
+                <th>E-posta</th>
+                <th>Telefon</th>
+                <th>Oda No</th>
+                <th>Oda Tipi</th>
+                <th>Giriş Tarihi</th>
+                <th>Çıkış Tarihi</th>
+                <th>Toplam Tutar</th>
+                <th>Durum</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@booking.Id</td>
+                    <td>@booking.GuestName</td>
+                    <td>@booking.GuestEmail</td>
+                    <td>@booking.GuestPhone</td>
+                    <td>Oda @booking.RoomNumber</td>
+                    <td>@booking.RoomType</td>
+                    <td>@booking.CheckInDate.ToString("dd.MM.yyyy")</td>
+                    <td>@booking.CheckOutDate.ToString("dd.MM.yyyy")</td>
+                    <td><strong>@booking.TotalPrice.ToString("C")</strong></td>
+                    <td>
+                        @if (booking.BookingStatus == "Confirmed")
+                        {
+                            <span class="badge badge-success">Onaylandı</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-danger">İptal Edildi</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script>
+        window.onload = function () {
+            window.print();
+        };
+    </script>
+</body>
+</html>

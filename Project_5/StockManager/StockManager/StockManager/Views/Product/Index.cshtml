@@ -1,0 +1,245 @@
+@{
+    ViewData["Title"] = "Ürün Yönetimi";
+    ViewData["ActivePage"] = "Products";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="text-white fw-bold mb-1">
+            <i class="fa-solid fa-box text-primary me-2"></i>Ürün Yönetimi
+        </h2>
+        <p class="text-muted small">Stoktaki ürünlerin listelenmesi ve güncellenmesi.</p>
+    </div>
+    <button class="btn btn-premium" onclick="openAddModal()">
+        <i class="fa-solid fa-plus me-2"></i>Yeni Ürün Ekle
+    </button>
+</div>
+
+<div class="card-premium p-4">
+    <div class="table-responsive" id="tableContainer">
+    </div>
+</div>
+
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-content-premium">
+            <div class="modal-header modal-header-premium">
+                <h5 class="modal-title text-white fw-bold" id="productModalLabel">Ürün Ekle</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Kapat"></button>
+            </div>
+            <form id="productForm" onsubmit="saveProduct(event)">
+                <div class="modal-body p-4">
+                    <input type="hidden" id="productId" name="Id" value="0" />
+                    
+                    <div class="mb-3">
+                        <label for="productName" class="form-label text-muted small">Ürün Adı</label>
+                        <input type="text" class="form-control form-control-premium" id="productName" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="productSku" class="form-label text-muted small">Barkod / SKU</label>
+                        <input type="text" class="form-control form-control-premium" id="productSku" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="productCategory" class="form-label text-muted small">Kategori</label>
+                        <select class="form-select form-control-premium" id="productCategory" required>
+                            <option value="">Kategori Seçiniz</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Furniture">Furniture</option>
+                            <option value="Apparel">Apparel</option>
+                            <option value="Food & Beverage">Food & Beverage</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="productUnitPrice" class="form-label text-muted small">Birim Fiyat ($)</label>
+                            <input type="number" step="0.01" min="0" class="form-control form-control-premium" id="productUnitPrice" required />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="productQuantity" class="form-label text-muted small">Stok Miktarı</label>
+                            <input type="number" min="0" class="form-control form-control-premium" id="productQuantity" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer modal-footer-premium">
+                    <button type="button" class="btn btn-secondary-premium" data-bs-dismiss="modal">İptal</button>
+                    <button type="submit" class="btn btn-premium">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        let dataTableInstance = null;
+        const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+
+        document.addEventListener("DOMContentLoaded", function() {
+            loadProducts();
+        });
+
+        function loadProducts() {
+            $.ajax({
+                url: '/Product/GetList',
+                type: 'GET',
+                dataType: 'json',
+                success: function(products) {
+                    let tableHtml = `
+                        <table id="productsTable" class="table table-dark table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Ürün Adı</th>
+                                    <th>Barkod / SKU</th>
+                                    <th>Kategori</th>
+                                    <th>Birim Fiyat</th>
+                                    <th>Stok Miktarı</th>
+                                    <th>Son Güncelleme</th>
+                                    <th class="text-end">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    `;
+
+                    products.forEach(p => {
+                        const date = new Date(p.lastUpdated).toLocaleString('tr-TR');
+                        tableHtml += `
+                            <tr>
+                                <td class="text-white fw-semibold">${escapeHtml(p.name)}</td>
+                                <td><code class="text-info bg-dark bg-opacity-25 px-2 py-1 rounded">${escapeHtml(p.sku)}</code></td>
+                                <td>${escapeHtml(p.category)}</td>
+                                <td>$${p.unitPrice.toFixed(2)}</td>
+                                <td>
+                                    <span class="fw-bold ${p.quantity < 15 ? 'text-danger' : 'text-success'}">${p.quantity} adet</span>
+                                </td>
+                                <td class="text-muted small">${date}</td>
+                                <td class="text-end">
+                                    <button class="btn btn-outline-info btn-sm me-1 rounded-3" onclick="editProduct(${p.id})">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger btn-sm rounded-3" onclick="deleteProduct(${p.id})">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `;
+                    });
+
+                    tableHtml += `
+                            </tbody>
+                        </table>
+                    `;
+
+                    document.getElementById('tableContainer').innerHTML = tableHtml;
+
+                    dataTableInstance = new simpleDatatables.DataTable("#productsTable", {
+                        searchable: true,
+                        fixedHeight: false,
+                        perPage: 10,
+                        labels: {
+                            placeholder: "Ara...",
+                            perPage: "ürün göster",
+                            noRows: "Kayıt bulunamadı",
+                            info: "{rows} üründen {start} ile {end} arası gösteriliyor",
+                        }
+                    });
+                },
+                error: function() {
+                    showToast("Ürün listesi yüklenirken hata oluştu!", "danger");
+                }
+            });
+        }
+
+        function openAddModal() {
+            document.getElementById('productModalLabel').innerText = "Yeni Ürün Ekle";
+            document.getElementById('productId').value = "0";
+            document.getElementById('productForm').reset();
+            productModal.show();
+        }
+
+        function editProduct(id) {
+            $.ajax({
+                url: `/Product/GetById/${id}`,
+                type: 'GET',
+                success: function(product) {
+                    document.getElementById('productModalLabel').innerText = "Ürün Düzenle";
+                    document.getElementById('productId').value = product.id;
+                    document.getElementById('productName').value = product.name;
+                    document.getElementById('productSku').value = product.sku;
+                    document.getElementById('productCategory').value = product.category;
+                    document.getElementById('productUnitPrice').value = product.unitPrice;
+                    document.getElementById('productQuantity').value = product.quantity;
+                    
+                    productModal.show();
+                },
+                error: function() {
+                    showToast("Ürün bilgileri alınırken hata oluştu!", "danger");
+                }
+            });
+        }
+
+        function saveProduct(e) {
+            e.preventDefault();
+
+            const product = {
+                Id: parseInt(document.getElementById('productId').value),
+                Name: document.getElementById('productName').value,
+                Sku: document.getElementById('productSku').value,
+                Category: document.getElementById('productCategory').value,
+                UnitPrice: parseFloat(document.getElementById('productUnitPrice').value),
+                Quantity: parseInt(document.getElementById('productQuantity').value)
+            };
+
+            $.ajax({
+                url: '/Product/Save',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(product),
+                success: function(res) {
+                    if (res.success) {
+                        showToast(res.message, "success");
+                        productModal.hide();
+                        loadProducts();
+                    } else {
+                        showToast(res.message, "danger");
+                    }
+                },
+                error: function() {
+                    showToast("İşlem gerçekleştirilirken bir sunucu hatası oluştu!", "danger");
+                }
+            });
+        }
+
+        function deleteProduct(id) {
+            if (confirm("Bu ürünü silmek istediğinize emin misiniz?")) {
+                $.ajax({
+                    url: `/Product/Delete/${id}`,
+                    type: 'POST',
+                    success: function(res) {
+                        if (res.success) {
+                            showToast(res.message, "success");
+                            loadProducts();
+                        } else {
+                            showToast(res.message, "danger");
+                        }
+                    },
+                    error: function() {
+                        showToast("Ürün silinirken hata oluştu!", "danger");
+                    }
+                });
+            }
+        }
+
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    </script>
+}
