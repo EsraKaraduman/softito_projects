@@ -54,10 +54,3 @@ Bu proje, sinema, tiyatro, konser ve festival gibi etkinlikler için bilet satı
   </p>
 </details>
 
-## 🛠️ Kurulum ve Çalıştırma
-1. **Veritabanı Ayarı:** `TicketBooking.Web` altındaki `appsettings.json` dosyasındaki SQL Server bağlantı dizesini düzenleyin.
-2. **Migration:** Veritabanını oluşturmak için Package Manager Console'da varsayılan projeyi `TicketBooking.Data` olarak seçip şu komutu çalıştırın:
-   ```bash
-   Update-Database
-   ```
-3. **Çalıştırma:** `TicketBooking.Web` projesini başlangıç projesi olarak ayarlayıp çalıştırın.
