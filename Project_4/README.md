@@ -40,10 +40,3 @@ Bu proje, ASP.NET Core MVC yerine **Razor Pages** teknolojisi kullanılarak geli
 * `Pages/Musteriler/`: Müşteri yönetimi sayfaları.
 * `Pages/Rapor.cshtml`: Veri analizi ve raporlama ekranı.
 
-## 🛠️ Kurulum ve Çalıştırma
-1. **Bağlantı Ayarı:** `appsettings.json` dosyasındaki ConnectionString alanını SQL Server kurulumunuza göre güncelleyin.
-2. **Tabloların Oluşturulması:** Visual Studio PM Console üzerinden migration işlemini çalıştırın:
-   ```bash
-   Update-Database
-   ```
-3. **Çalıştırma:** Visual Studio'da projeyi derleyip tarayıcıda görüntüleyin.
