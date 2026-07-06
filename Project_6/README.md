@@ -43,7 +43,3 @@ Bu proje, yol süpürme araçlarının (filosunun), bu araçlara ait servis/arı
   </p>
 </details>
 
-## 🛠️ Kurulum ve Çalıştırma
-1. **Veritabanı Dosyası:** Proje klasöründeki `SimakYolSupurge.db` adlı SQLite veritabanı dosyası hazır olarak gelmektedir. Herhangi bir harici veritabanı sunucusu kurulumuna ihtiyaç duymaz.
-2. **Çalıştırma:** Visual Studio'da projeyi doğrudan başlatabilirsiniz.
-3. **Varsayılan Oturum Bilgileri:** Proje veritabanında tanımlı kullanıcılar veya kayıt ekranı aracılığıyla yeni bir hesap oluşturarak sisteme giriş yapabilirsiniz.
