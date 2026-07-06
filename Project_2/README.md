@@ -43,12 +43,7 @@ Bu proje, bir butik çikolata mağazasının ürün kataloğunu sergilemesi, mü
 * `Views/`: Müşteri arayüzü ve Admin yönetim ekranları.
 * `Data/`: Entity Framework DbContext ve veritabanı şeması.
 
-## 🛠️ Kurulum ve Çalıştırma
-1. **Veritabanı Ayarı:** `appsettings.json` dosyasındaki SQL Server bağlantı dizesini kendi cihazınıza göre düzenleyin:
-   ```json
-   "ConnectionStrings": {
-     "DefaultConnection": "Server=CIHAZ_ADI;Database=CikolataciDb;Trusted_Connection=True;TrustServerCertificate=True;"
-   }
+
    ```
 2. **Migration Uygulama:** Visual Studio Paket Yöneticisi Konsolu'nda aşağıdaki komutu çalıştırarak veritabanı tablolarını oluşturun:
    ```bash
