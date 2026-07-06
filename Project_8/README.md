@@ -43,8 +43,3 @@ Bu proje, bir otelin oda kapasitesini, fiyatlandırmasını, müşteri rezervasy
   </p>
 </details>
 
-## 🛠️ Kurulum ve Çalıştırma
-1. **SQL Betiklerini Çalıştırma:** İsteğe bağlı olarak SQL Server Management Studio (SSMS) üzerinden `DbInit.sql` ve ardından `SeedDb.sql` betiklerini çalıştırarak veritabanını hazırlayabilirsiniz. Veya doğrudan EF Core migration kullanabilirsiniz.
-2. **API Ayarı:** `HotelProject.API` altındaki `appsettings.json` dosyasında veritabanı bağlantısını ve JWT anahtarını düzenleyin.
-3. **MVC Ayarı:** `HotelProject.MVC` projesinin `appsettings.json` dosyasında API base URL'ini (`http://localhost:...`) kendi API portunuza göre eşleştirin.
-4. **Çalıştırma:** Visual Studio'da hem API hem de MVC projelerini aynı anda başlayacak şekilde (Multiple Startup Projects) ayarlayıp çalıştırın.
