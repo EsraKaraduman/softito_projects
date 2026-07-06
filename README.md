@@ -58,7 +58,7 @@ Aşağıda depodaki tüm projelerin özet bilgileri, kullanılan teknolojiler ve
 * **Klasör Linki:** [Project_5 Klasörüne Git](./Project_5)
 * **Ekran Görüntüsü:**
   <p align="left">
-    <img src="./assets/StockManager_image_1.png" width="80%" alt="Stok Yöneticisi Projesi" />
+    <img src="./assets/StockManager_image_8.png" width="80%" alt="Stok Yöneticisi Projesi" />
   </p>
 
 ---
