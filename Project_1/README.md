@@ -44,15 +44,4 @@ Bu proje, ASP.NET Core MVC mimarisi kullanılarak geliştirilmiş kapsamlı bir 
 * `Views/`: Kullanıcıya gösterilen HTML (Razor syntax) arayüzleri.
 * `Data/AppDbContext.cs`: Entity Framework Core veritabanı bağlantı sınıfı.
 
-## 🛠️ Kurulum ve Çalıştırma
-1. **Veritabanı Ayarı:** `appsettings.json` dosyasındaki `DefaultConnection` bağlantı dizesini kendi MS SQL Server ayarlarınıza göre düzenleyin:
-   ```json
-   "ConnectionStrings": {
-     "DefaultConnection": "Server=CIHAZ_ADI;Database=MarketDb;Trusted_Connection=True;TrustServerCertificate=True;"
-   }
-   ```
-2. **Migration Uygulama:** Paket Yöneticisi Konsolu'nda (Package Manager Console) veritabanını oluşturmak için şu komutu çalıştırın:
-   ```bash
-   Update-Database
-   ```
-3. **Projeyi Çalıştırma:** Visual Studio üzerinden projeyi başlatın. Otomatik olarak `Account/Login` sayfasına yönlendirileceksiniz.
+
