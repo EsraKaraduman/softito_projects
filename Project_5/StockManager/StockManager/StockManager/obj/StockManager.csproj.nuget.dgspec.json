@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\esra\\source\\repos\\StockManager\\StockManager\\StockManager.csproj": {}
+    "C:\\Users\\esra\\source\\repos\\softito\\Project_5\\StockManager\\StockManager\\StockManager\\StockManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\esra\\source\\repos\\StockManager\\StockManager\\StockManager.csproj": {
+    "C:\\Users\\esra\\source\\repos\\softito\\Project_5\\StockManager\\StockManager\\StockManager\\StockManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\esra\\source\\repos\\StockManager\\StockManager\\StockManager.csproj",
+        "projectUniqueName": "C:\\Users\\esra\\source\\repos\\softito\\Project_5\\StockManager\\StockManager\\StockManager\\StockManager.csproj",
         "projectName": "StockManager",
-        "projectPath": "C:\\Users\\esra\\source\\repos\\StockManager\\StockManager\\StockManager.csproj",
+        "projectPath": "C:\\Users\\esra\\source\\repos\\softito\\Project_5\\StockManager\\StockManager\\StockManager\\StockManager.csproj",
         "packagesPath": "C:\\Users\\esra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\esra\\source\\repos\\StockManager\\StockManager\\obj\\",
+        "outputPath": "C:\\Users\\esra\\source\\repos\\softito\\Project_5\\StockManager\\StockManager\\StockManager\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

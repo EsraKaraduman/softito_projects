@@ -1,31 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/crmM/True/SqlTable/dbo.Kullanicis.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4577FB42-9D6E-58B2-2745-834FC38C6EF3}|DondurmacfUI\\DondurmacfUI.csproj|c:\\users\\esra\\source\\repos\\dondurmacfui\\dondurmacfui\\views\\rapor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4577FB42-9D6E-58B2-2745-834FC38C6EF3}|DondurmacfUI\\DondurmacfUI.csproj|solutionrelative:dondurmacfui\\views\\rapor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4577FB42-9D6E-58B2-2745-834FC38C6EF3}|DondurmacfUI\\DondurmacfUI.csproj|c:\\users\\esra\\source\\repos\\dondurmacfui\\dondurmacfui\\controllers\\turcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4577FB42-9D6E-58B2-2745-834FC38C6EF3}|DondurmacfUI\\DondurmacfUI.csproj|solutionrelative:dondurmacfui\\controllers\\turcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4577FB42-9D6E-58B2-2745-834FC38C6EF3}|DondurmacfUI\\DondurmacfUI.csproj|c:\\users\\esra\\source\\repos\\dondurmacfui\\dondurmacfui\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4577FB42-9D6E-58B2-2745-834FC38C6EF3}|DondurmacfUI\\DondurmacfUI.csproj|solutionrelative:dondurmacfui\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4577FB42-9D6E-58B2-2745-834FC38C6EF3}|DondurmacfUI\\DondurmacfUI.csproj|c:\\users\\esra\\source\\repos\\dondurmacfui\\dondurmacfui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4577FB42-9D6E-58B2-2745-834FC38C6EF3}|DondurmacfUI\\DondurmacfUI.csproj|solutionrelative:dondurmacfui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3713D8E6-AAEB-DC9F-6559-89B91370741E}|Dondurmacf.Model\\Dondurmacf.Model.csproj|c:\\users\\esra\\source\\repos\\dondurmacfui\\dondurmacf.model\\urun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3713D8E6-AAEB-DC9F-6559-89B91370741E}|Dondurmacf.Model\\Dondurmacf.Model.csproj|solutionrelative:dondurmacf.model\\urun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\esra\\source\\repos\\softito\\Project_3\\DondurmacfUI\\DondurmacfUI\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -33,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 351,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,78 +34,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "dbo.Kullanicis [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/crmM/True/SqlTable/dbo.Kullanicis.sql",
-              "ToolTip": "dbo.Kullanicis [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2026-07-03T17:12:47.817Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\DondurmacfUI\\Views\\Rapor\\Index.cshtml",
-              "RelativeDocumentMoniker": "DondurmacfUI\\Views\\Rapor\\Index.cshtml",
-              "ToolTip": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\DondurmacfUI\\Views\\Rapor\\Index.cshtml",
-              "RelativeToolTip": "DondurmacfUI\\Views\\Rapor\\Index.cshtml",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAuwB4AAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-03T17:05:57.238Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\DondurmacfUI\\Views\\_ViewImports.cshtml",
-              "RelativeDocumentMoniker": "DondurmacfUI\\Views\\_ViewImports.cshtml",
-              "ToolTip": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\DondurmacfUI\\Views\\_ViewImports.cshtml",
-              "RelativeToolTip": "DondurmacfUI\\Views\\_ViewImports.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-06-17T05:44:16.969Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TurController.cs",
-              "DocumentMoniker": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\DondurmacfUI\\Controllers\\TurController.cs",
-              "RelativeDocumentMoniker": "DondurmacfUI\\Controllers\\TurController.cs",
-              "ToolTip": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\DondurmacfUI\\Controllers\\TurController.cs",
-              "RelativeToolTip": "DondurmacfUI\\Controllers\\TurController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-17T05:17:33.226Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\DondurmacfUI\\Program.cs",
-              "RelativeDocumentMoniker": "DondurmacfUI\\Program.cs",
-              "ToolTip": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\DondurmacfUI\\Program.cs",
-              "RelativeToolTip": "DondurmacfUI\\Program.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAEAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-16T12:13:57.554Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Urun.cs",
-              "DocumentMoniker": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\Dondurmacf.Model\\Urun.cs",
-              "RelativeDocumentMoniker": "Dondurmacf.Model\\Urun.cs",
-              "ToolTip": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\Dondurmacf.Model\\Urun.cs",
-              "RelativeToolTip": "Dondurmacf.Model\\Urun.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-16T11:56:30.352Z"
             }
           ]
         }

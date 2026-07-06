@@ -13,3 +13,4 @@ C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Data\obj\Debug\net10.
 C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Data\obj\Debug\net10.0\refint\TicketBooking.Data.dll
 C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Data\obj\Debug\net10.0\TicketBooking.Data.pdb
 C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Data\obj\Debug\net10.0\ref\TicketBooking.Data.dll
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Data\obj\Debug\net10.0\TicketBooking.Data.sourcelink.json

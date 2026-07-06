@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\Dondurmacf.Model\\Dondurmacf.Model.csproj": {}
+    "C:\\Users\\esra\\source\\repos\\softito\\Project_3\\DondurmacfUI\\DondurmacfUI\\Dondurmacf.Model\\Dondurmacf.Model.csproj": {}
   },
   "projects": {
-    "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\Dondurmacf.Model\\Dondurmacf.Model.csproj": {
+    "C:\\Users\\esra\\source\\repos\\softito\\Project_3\\DondurmacfUI\\DondurmacfUI\\Dondurmacf.Model\\Dondurmacf.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\Dondurmacf.Model\\Dondurmacf.Model.csproj",
+        "projectUniqueName": "C:\\Users\\esra\\source\\repos\\softito\\Project_3\\DondurmacfUI\\DondurmacfUI\\Dondurmacf.Model\\Dondurmacf.Model.csproj",
         "projectName": "Dondurmacf.Model",
-        "projectPath": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\Dondurmacf.Model\\Dondurmacf.Model.csproj",
+        "projectPath": "C:\\Users\\esra\\source\\repos\\softito\\Project_3\\DondurmacfUI\\DondurmacfUI\\Dondurmacf.Model\\Dondurmacf.Model.csproj",
         "packagesPath": "C:\\Users\\esra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\Dondurmacf.Model\\obj\\",
+        "outputPath": "C:\\Users\\esra\\source\\repos\\softito\\Project_3\\DondurmacfUI\\DondurmacfUI\\Dondurmacf.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -16,6 +16,27 @@ Bu proje, bir butik çikolata mağazasının ürün kataloğunu sergilemesi, mü
 * **Yönetici Paneli (AdminController):** Mağaza yöneticisi için toplam gelir, en çok satan ürünler ve aktif sipariş durumlarının izlendiği kontrol paneli.
 * **Giriş Sistemi (AccountController):** Güvenli kullanıcı kayıt, giriş ve çıkış işlemleri.
 
+## 📸 Ekran Görüntüleri
+
+### Vitrin ve Ürün Kataloğu
+<p align="center">
+  <img src="../assets/CikolataciMVC_image_1.png" width="48%" alt="Ürün Vitrini" />
+  <img src="../assets/CikolataciMVC_image_2.png" width="48%" alt="Detay Sayfası" />
+</p>
+
+<details>
+  <summary>🔍 Diğer Ekran Görüntülerini Göster</summary>
+  <br>
+  <p align="center">
+    <img src="../assets/CikolataciMVC_image_3.png" width="48%" alt="Kayıt Sayfası" />
+    <img src="../assets/CikolataciMVC_image_4.png" width="48%" alt="Sepet Detayı" />
+  </p>
+  <p align="center">
+    <img src="../assets/CikolataciMVC_image_5.png" width="48%" alt="Yönetim Paneli" />
+    <img src="../assets/CikolataciMVC_image_6.png" width="48%" alt="Kullanıcı Listesi" />
+  </p>
+</details>
+
 ## 📂 Dosya Yapısı
 * `Controllers/`: Çikolatacı iş mantığını yöneten kontrolörler.
 * `Models/`: Çikolata, Kategori, Kullanıcı ve Satış veri yapıları.
@@ -34,7 +55,3 @@ Bu proje, bir butik çikolata mağazasının ürün kataloğunu sergilemesi, mü
    Update-Database
    ```
 3. **Projeyi Çalıştırma:** Projeyi çalıştırıp butik çikolata dünyasını keşfetmeye başlayabilirsiniz.
-
----
-
-*(Not: Proje ekran görüntüsünü görmek için buraya kendi ekran görüntünüzü `chocolate_shop_mockup.jpg` ismiyle `assets/` klasörüne ekleyebilirsiniz.)*

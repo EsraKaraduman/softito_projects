@@ -3134,11 +3134,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\DondurmacfUI\\DondurmacfUI.csproj",
+      "projectUniqueName": "C:\\Users\\esra\\source\\repos\\softito\\Project_3\\DondurmacfUI\\DondurmacfUI\\DondurmacfUI\\DondurmacfUI.csproj",
       "projectName": "DondurmacfUI",
-      "projectPath": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\DondurmacfUI\\DondurmacfUI.csproj",
+      "projectPath": "C:\\Users\\esra\\source\\repos\\softito\\Project_3\\DondurmacfUI\\DondurmacfUI\\DondurmacfUI\\DondurmacfUI.csproj",
       "packagesPath": "C:\\Users\\esra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\DondurmacfUI\\obj\\",
+      "outputPath": "C:\\Users\\esra\\source\\repos\\softito\\Project_3\\DondurmacfUI\\DondurmacfUI\\DondurmacfUI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3161,11 +3161,11 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\Dondurmacf.Data\\Dondurmacf.Data.csproj": {
-              "projectPath": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\Dondurmacf.Data\\Dondurmacf.Data.csproj"
+            "C:\\Users\\esra\\source\\repos\\softito\\Project_3\\DondurmacfUI\\DondurmacfUI\\Dondurmacf.Data\\Dondurmacf.Data.csproj": {
+              "projectPath": "C:\\Users\\esra\\source\\repos\\softito\\Project_3\\DondurmacfUI\\DondurmacfUI\\Dondurmacf.Data\\Dondurmacf.Data.csproj"
             },
-            "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\Dondurmacf.Model\\Dondurmacf.Model.csproj": {
-              "projectPath": "C:\\Users\\esra\\source\\repos\\DondurmacfUI\\Dondurmacf.Model\\Dondurmacf.Model.csproj"
+            "C:\\Users\\esra\\source\\repos\\softito\\Project_3\\DondurmacfUI\\DondurmacfUI\\Dondurmacf.Model\\Dondurmacf.Model.csproj": {
+              "projectPath": "C:\\Users\\esra\\source\\repos\\softito\\Project_3\\DondurmacfUI\\DondurmacfUI\\Dondurmacf.Model\\Dondurmacf.Model.csproj"
             }
           }
         }

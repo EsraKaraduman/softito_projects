@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZTptQtE5zDU=",
+  "dgSpecHash": "WT+Lk8n2izk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\esra\\source\\repos\\MarketMvcProject\\MarketMvcProject\\MarketMvcProject.csproj",
+  "projectFilePath": "C:\\Users\\esra\\source\\repos\\softito\\Project_1\\MarketMvcProject\\MarketMvcProject\\MarketMvcProject\\MarketMvcProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\esra\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\esra\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",

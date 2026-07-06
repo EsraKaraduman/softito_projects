@@ -3097,11 +3097,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\esra\\source\\repos\\CikolataciMVC\\CikolataciMVC\\CikolataciMVC.csproj",
+      "projectUniqueName": "C:\\Users\\esra\\source\\repos\\softito\\Project_2\\CikolataciMVC\\CikolataciMVC\\CikolataciMVC\\CikolataciMVC.csproj",
       "projectName": "CikolataciMVC",
-      "projectPath": "C:\\Users\\esra\\source\\repos\\CikolataciMVC\\CikolataciMVC\\CikolataciMVC.csproj",
+      "projectPath": "C:\\Users\\esra\\source\\repos\\softito\\Project_2\\CikolataciMVC\\CikolataciMVC\\CikolataciMVC\\CikolataciMVC.csproj",
       "packagesPath": "C:\\Users\\esra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\esra\\source\\repos\\CikolataciMVC\\CikolataciMVC\\obj\\",
+      "outputPath": "C:\\Users\\esra\\source\\repos\\softito\\Project_2\\CikolataciMVC\\CikolataciMVC\\CikolataciMVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

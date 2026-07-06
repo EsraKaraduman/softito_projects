@@ -3561,11 +3561,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\esra\\source\\repos\\Dukkanrzrpg\\Dukkanrzrpg\\Dukkanrzrpg.csproj",
+      "projectUniqueName": "C:\\Users\\esra\\source\\repos\\softito\\Project_4\\Dukkanrzrpg\\Dukkanrzrpg\\Dukkanrzrpg\\Dukkanrzrpg.csproj",
       "projectName": "Dukkanrzrpg",
-      "projectPath": "C:\\Users\\esra\\source\\repos\\Dukkanrzrpg\\Dukkanrzrpg\\Dukkanrzrpg.csproj",
+      "projectPath": "C:\\Users\\esra\\source\\repos\\softito\\Project_4\\Dukkanrzrpg\\Dukkanrzrpg\\Dukkanrzrpg\\Dukkanrzrpg.csproj",
       "packagesPath": "C:\\Users\\esra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\esra\\source\\repos\\Dukkanrzrpg\\Dukkanrzrpg\\obj\\",
+      "outputPath": "C:\\Users\\esra\\source\\repos\\softito\\Project_4\\Dukkanrzrpg\\Dukkanrzrpg\\Dukkanrzrpg\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

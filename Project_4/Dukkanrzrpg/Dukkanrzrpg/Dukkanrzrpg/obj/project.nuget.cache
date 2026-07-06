@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jsZ01gtz+hM=",
+  "dgSpecHash": "p+/4abOGwdA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\esra\\source\\repos\\Dukkanrzrpg\\Dukkanrzrpg\\Dukkanrzrpg.csproj",
+  "projectFilePath": "C:\\Users\\esra\\source\\repos\\softito\\Project_4\\Dukkanrzrpg\\Dukkanrzrpg\\Dukkanrzrpg\\Dukkanrzrpg.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\esra\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\esra\\.nuget\\packages\\microsoft.bcl.cryptography\\9.0.13\\microsoft.bcl.cryptography.9.0.13.nupkg.sha512",

@@ -228,3 +228,5 @@ C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Web\obj\Debug\net10.0
 C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Web\obj\Debug\net10.0\TicketBooking.Web.genruntimeconfig.cache
 C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Web\obj\Debug\net10.0\ref\TicketBooking.Web.dll
 C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Web\obj\Debug\net10.0\compressed\dj9uds99au-{0}-l4e129bhk5-l4e129bhk5.gz
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Web\obj\Debug\net10.0\TicketBooking.Web.sourcelink.json
+C:\Users\esra\source\repos\softito\Project_9\TicketBooking.Web\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

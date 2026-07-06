@@ -21,6 +21,39 @@ Bu proje, sinema, tiyatro, konser ve festival gibi etkinlikler için bilet satı
 * **Kullanıcı Kayıt & Giriş (AccountController):** Müşteri kaydı, şifre sıfırlama, profil yönetimi ve admin paneline yetkisiz erişimlerin engellenmesi.
 * **Gösterge Paneli:** Toplam satılan bilet sayısı, doluluk oranları ve etkinlik bazlı gelir raporları.
 
+## 📸 Ekran Görüntüleri
+
+### Etkinlik Seçimi ve Bilet Satın Alma
+<p align="center">
+  <img src="../assets/TicketBooking_image_1.png" width="48%" alt="Etkinlik Kataloğu" />
+  <img src="../assets/TicketBooking_image_2.png" width="48%" alt="Detay ve Rezervasyon" />
+</p>
+
+<details>
+  <summary>🔍 Diğer Ekran Görüntülerini Göster</summary>
+  <br>
+  <p align="center">
+    <img src="../assets/TicketBooking_image_3.png" width="48%" alt="Kayıt Sayfası" />
+    <img src="../assets/TicketBooking_image_4.png" width="48%" alt="Kullanıcı Girişi" />
+  </p>
+  <p align="center">
+    <img src="../assets/TicketBooking_image_5.png" width="48%" alt="Bilet Satın Alma Formu" />
+    <img src="../assets/TicketBooking_image_6.png" width="48%" alt="Satın Alınan Biletler" />
+  </p>
+  <p align="center">
+    <img src="../assets/TicketBooking_image_7.png" width="48%" alt="Yönetici Anasayfa" />
+    <img src="../assets/TicketBooking_image_8.png" width="48%" alt="Etkinlik Ekleme" />
+  </p>
+  <p align="center">
+    <img src="../assets/TicketBooking_image_9.png" width="48%" alt="Kategoriler Listesi" />
+    <img src="../assets/TicketBooking_image_10.png" width="48%" alt="Bilet Detayı" />
+  </p>
+  <p align="center">
+    <img src="../assets/TicketBooking_image_11.png" width="48%" alt="Kullanıcı Raporları" />
+    <img src="../assets/TicketBooking_image_12.png" width="48%" alt="Koltuk Seçim Arayüzü" />
+  </p>
+</details>
+
 ## 🛠️ Kurulum ve Çalıştırma
 1. **Veritabanı Ayarı:** `TicketBooking.Web` altındaki `appsettings.json` dosyasındaki SQL Server bağlantı dizesini düzenleyin.
 2. **Migration:** Veritabanını oluşturmak için Package Manager Console'da varsayılan projeyi `TicketBooking.Data` olarak seçip şu komutu çalıştırın:
@@ -28,7 +61,3 @@ Bu proje, sinema, tiyatro, konser ve festival gibi etkinlikler için bilet satı
    Update-Database
    ```
 3. **Çalıştırma:** `TicketBooking.Web` projesini başlangıç projesi olarak ayarlayıp çalıştırın.
-
----
-
-*(Not: Proje ekran görüntüsünü görmek için buraya kendi ekran görüntünüzü `ticket_booking_mockup.jpg` ismiyle `assets/` klasörüne ekleyebilirsiniz.)*

@@ -13,6 +13,27 @@ Bu proje, ASP.NET Core MVC yerine **Razor Pages** teknolojisi kullanılarak geli
 * **Satış Raporları (Rapor.cshtml):** En popüler oyuncak kategorileri, stokta azalan oyuncaklar ve aylık satış rakamlarının dinamik raporlanması.
 * **Kullanıcı Girişi (Login.cshtml):** Dükkan sahibi ve çalışanları için oturum açma sayfası.
 
+## 📸 Ekran Görüntüleri
+
+### Oyuncak Kataloğu ve Müşteri Paneli
+<p align="center">
+  <img src="../assets/Dukkanrzrpg_image_1.png" width="48%" alt="Ürün Vitrini" />
+  <img src="../assets/Dukkanrzrpg_image_2.png" width="48%" alt="Oyuncak Detayı" />
+</p>
+
+<details>
+  <summary>🔍 Diğer Ekran Görüntülerini Göster</summary>
+  <br>
+  <p align="center">
+    <img src="../assets/Dukkanrzrpg_image_3.png" width="48%" alt="Müşteri Listesi" />
+    <img src="../assets/Dukkanrzrpg_image_4.png" width="48%" alt="Yeni Oyuncak Ekleme" />
+  </p>
+  <p align="center">
+    <img src="../assets/Dukkanrzrpg_image_5.png" width="48%" alt="Satış Analizleri" />
+    <img src="../assets/Dukkanrzrpg_image_6.png" width="48%" alt="Giriş Ekranı" />
+  </p>
+</details>
+
 ## 📂 Dosya Yapısı (Razor Pages Özel)
 * `Pages/Index.cshtml`: Dükkanın genel durumu ve hızlı istatistikler.
 * `Pages/Oyuncaklar/`: Oyuncak yönetimiyle ilgili tüm `.cshtml` (arayüz) ve `.cshtml.cs` (kod) dosyaları.
@@ -26,7 +47,3 @@ Bu proje, ASP.NET Core MVC yerine **Razor Pages** teknolojisi kullanılarak geli
    Update-Database
    ```
 3. **Çalıştırma:** Visual Studio'da projeyi derleyip tarayıcıda görüntüleyin.
-
----
-
-*(Not: Proje ekran görüntüsünü görmek için buraya kendi ekran görüntünüzü `toy_shop_mockup.jpg` ismiyle `assets/` klasörüne ekleyebilirsiniz.)*

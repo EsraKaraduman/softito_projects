@@ -9,3 +9,15 @@ C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Model\obj\Debug\net10.0\Dondu
 C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Model\obj\Debug\net10.0\refint\Dondurmacf.Model.dll
 C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Model\obj\Debug\net10.0\Dondurmacf.Model.pdb
 C:\Users\esra\source\repos\DondurmacfUI\Dondurmacf.Model\obj\Debug\net10.0\ref\Dondurmacf.Model.dll
+C:\Users\esra\source\repos\softito\Project_3\DondurmacfUI\DondurmacfUI\Dondurmacf.Model\bin\Debug\net10.0\Dondurmacf.Model.deps.json
+C:\Users\esra\source\repos\softito\Project_3\DondurmacfUI\DondurmacfUI\Dondurmacf.Model\bin\Debug\net10.0\Dondurmacf.Model.dll
+C:\Users\esra\source\repos\softito\Project_3\DondurmacfUI\DondurmacfUI\Dondurmacf.Model\bin\Debug\net10.0\Dondurmacf.Model.pdb
+C:\Users\esra\source\repos\softito\Project_3\DondurmacfUI\DondurmacfUI\Dondurmacf.Model\obj\Debug\net10.0\Dondurmacf.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\esra\source\repos\softito\Project_3\DondurmacfUI\DondurmacfUI\Dondurmacf.Model\obj\Debug\net10.0\Dondurmacf.Model.AssemblyInfoInputs.cache
+C:\Users\esra\source\repos\softito\Project_3\DondurmacfUI\DondurmacfUI\Dondurmacf.Model\obj\Debug\net10.0\Dondurmacf.Model.AssemblyInfo.cs
+C:\Users\esra\source\repos\softito\Project_3\DondurmacfUI\DondurmacfUI\Dondurmacf.Model\obj\Debug\net10.0\Dondurmacf.Model.csproj.CoreCompileInputs.cache
+C:\Users\esra\source\repos\softito\Project_3\DondurmacfUI\DondurmacfUI\Dondurmacf.Model\obj\Debug\net10.0\Dondurmacf.Model.sourcelink.json
+C:\Users\esra\source\repos\softito\Project_3\DondurmacfUI\DondurmacfUI\Dondurmacf.Model\obj\Debug\net10.0\Dondurmacf.Model.dll
+C:\Users\esra\source\repos\softito\Project_3\DondurmacfUI\DondurmacfUI\Dondurmacf.Model\obj\Debug\net10.0\refint\Dondurmacf.Model.dll
+C:\Users\esra\source\repos\softito\Project_3\DondurmacfUI\DondurmacfUI\Dondurmacf.Model\obj\Debug\net10.0\Dondurmacf.Model.pdb
+C:\Users\esra\source\repos\softito\Project_3\DondurmacfUI\DondurmacfUI\Dondurmacf.Model\obj\Debug\net10.0\ref\Dondurmacf.Model.dll

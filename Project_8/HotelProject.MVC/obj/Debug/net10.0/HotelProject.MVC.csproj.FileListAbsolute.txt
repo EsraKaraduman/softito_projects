@@ -21,7 +21,6 @@ C:\Users\esra\source\repos\softito\Project_8\HotelProject.MVC\obj\Debug\net10.0\
 C:\Users\esra\source\repos\softito\Project_8\HotelProject.MVC\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\esra\source\repos\softito\Project_8\HotelProject.MVC\obj\Debug\net10.0\scopedcss\bundle\HotelProject.MVC.styles.css
 C:\Users\esra\source\repos\softito\Project_8\HotelProject.MVC\obj\Debug\net10.0\scopedcss\projectbundle\HotelProject.MVC.bundle.scp.css
-C:\Users\esra\source\repos\softito\Project_8\HotelProject.MVC\obj\Debug\net10.0\compressed\mug86ehfz5-{0}-mwbf69yxei-mwbf69yxei.gz
 C:\Users\esra\source\repos\softito\Project_8\HotelProject.MVC\obj\Debug\net10.0\compressed\tuwuvhiv1k-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Users\esra\source\repos\softito\Project_8\HotelProject.MVC\obj\Debug\net10.0\compressed\v565ue4xkj-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\Users\esra\source\repos\softito\Project_8\HotelProject.MVC\obj\Debug\net10.0\compressed\xrchlvdou1-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -95,3 +94,6 @@ C:\Users\esra\source\repos\softito\Project_8\HotelProject.MVC\obj\Debug\net10.0\
 C:\Users\esra\source\repos\softito\Project_8\HotelProject.MVC\obj\Debug\net10.0\HotelProject.MVC.pdb
 C:\Users\esra\source\repos\softito\Project_8\HotelProject.MVC\obj\Debug\net10.0\HotelProject.MVC.genruntimeconfig.cache
 C:\Users\esra\source\repos\softito\Project_8\HotelProject.MVC\obj\Debug\net10.0\ref\HotelProject.MVC.dll
+C:\Users\esra\source\repos\softito\Project_8\HotelProject.MVC\obj\Debug\net10.0\HotelProject.MVC.sourcelink.json
+C:\Users\esra\source\repos\softito\Project_8\HotelProject.MVC\obj\Debug\net10.0\compressed\mug86ehfz5-{0}-cx6x08qpr9-cx6x08qpr9.gz
+C:\Users\esra\source\repos\softito\Project_8\HotelProject.MVC\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

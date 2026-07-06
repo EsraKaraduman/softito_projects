@@ -19,12 +19,32 @@ Bu proje, bir otelin oda kapasitesini, fiyatlandırmasını, müşteri rezervasy
 * **API Yetkilendirme (AuthController):** JWT entegrasyonu ile güvenli API erişimi. Sadece yetkili MVC veya dış uygulamaların veri yazmasına izin verilir.
 * **SQL Betikleri:** Veritabanının sıfırdan şemasını oluşturan `DbInit.sql` ve test verilerini dolduran `SeedDb.sql` dosyaları mevcuttur.
 
+## 📸 Ekran Görüntüleri
+
+### Oda Listesi ve Rezervasyon Yönetimi
+<p align="center">
+  <img src="../assets/HotelProject_image_1.png" width="48%" alt="Oda Seçim Arayüzü" />
+  <img src="../assets/HotelProject_image_2.png" width="48%" alt="Oda Detayları" />
+</p>
+
+<details>
+  <summary>🔍 Diğer Ekran Görüntülerini Göster</summary>
+  <br>
+  <p align="center">
+    <img src="../assets/HotelProject_image_3.png" width="48%" alt="Rezervasyon Giriş Formu" />
+    <img src="../assets/HotelProject_image_4.png" width="48%" alt="Rezervasyon Listesi" />
+  </p>
+  <p align="center">
+    <img src="../assets/HotelProject_image_5.png" width="48%" alt="Giriş Ekranı" />
+    <img src="../assets/HotelProject_image_6.png" width="48%" alt="Kayıt Ekranı" />
+  </p>
+  <p align="center">
+    <img src="../assets/HotelProject_image_7.png" width="48%" alt="Web API Swagger Dokümantasyonu" />
+  </p>
+</details>
+
 ## 🛠️ Kurulum ve Çalıştırma
 1. **SQL Betiklerini Çalıştırma:** İsteğe bağlı olarak SQL Server Management Studio (SSMS) üzerinden `DbInit.sql` ve ardından `SeedDb.sql` betiklerini çalıştırarak veritabanını hazırlayabilirsiniz. Veya doğrudan EF Core migration kullanabilirsiniz.
 2. **API Ayarı:** `HotelProject.API` altındaki `appsettings.json` dosyasında veritabanı bağlantısını ve JWT anahtarını düzenleyin.
 3. **MVC Ayarı:** `HotelProject.MVC` projesinin `appsettings.json` dosyasında API base URL'ini (`http://localhost:...`) kendi API portunuza göre eşleştirin.
 4. **Çalıştırma:** Visual Studio'da hem API hem de MVC projelerini aynı anda başlayacak şekilde (Multiple Startup Projects) ayarlayıp çalıştırın.
-
----
-
-*(Not: Proje ekran görüntüsünü görmek için buraya kendi ekran görüntünüzü `hotel_booking_mockup.jpg` ismiyle `assets/` klasörüne ekleyebilirsiniz.)*

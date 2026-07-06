@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\esra\\source\\repos\\MarketMvcProject\\MarketMvcProject\\MarketMvcProject.csproj": {}
+    "C:\\Users\\esra\\source\\repos\\softito\\Project_1\\MarketMvcProject\\MarketMvcProject\\MarketMvcProject\\MarketMvcProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\esra\\source\\repos\\MarketMvcProject\\MarketMvcProject\\MarketMvcProject.csproj": {
+    "C:\\Users\\esra\\source\\repos\\softito\\Project_1\\MarketMvcProject\\MarketMvcProject\\MarketMvcProject\\MarketMvcProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\esra\\source\\repos\\MarketMvcProject\\MarketMvcProject\\MarketMvcProject.csproj",
+        "projectUniqueName": "C:\\Users\\esra\\source\\repos\\softito\\Project_1\\MarketMvcProject\\MarketMvcProject\\MarketMvcProject\\MarketMvcProject.csproj",
         "projectName": "MarketMvcProject",
-        "projectPath": "C:\\Users\\esra\\source\\repos\\MarketMvcProject\\MarketMvcProject\\MarketMvcProject.csproj",
+        "projectPath": "C:\\Users\\esra\\source\\repos\\softito\\Project_1\\MarketMvcProject\\MarketMvcProject\\MarketMvcProject\\MarketMvcProject.csproj",
         "packagesPath": "C:\\Users\\esra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\esra\\source\\repos\\MarketMvcProject\\MarketMvcProject\\obj\\",
+        "outputPath": "C:\\Users\\esra\\source\\repos\\softito\\Project_1\\MarketMvcProject\\MarketMvcProject\\MarketMvcProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
