@@ -54,10 +54,3 @@ Bu proje, eğitim kurumlarında veya kurs merkezlerinde kursların, öğrenci ka
 * `Views/`: Öğrenci paneli, eğitmen yönetim formları ve kurs arama ekranları.
 * `Data/`: Entity Framework DbContext sınıfı ve başlangıç verileri (Seed Data).
 
-## 🛠️ Kurulum ve Çalıştırma
-1. **Veritabanı Bağlantısı:** `appsettings.json` dosyasındaki `DefaultConnection` bağlantı dizesini kendi SQL Server ayarlarınıza göre düzenleyin.
-2. **Tabloların Oluşturulması:** Visual Studio Paket Yöneticisi Konsolunda:
-   ```bash
-   Update-Database
-   ```
-3. **Çalıştırma:** Visual Studio ile projeyi derleyip çalıştırın.
