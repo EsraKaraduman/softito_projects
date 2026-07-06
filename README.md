@@ -105,31 +105,6 @@ Aşağıda depodaki tüm projelerin özet bilgileri, kullanılan teknolojiler ve
     <img src="./assets/TicketBooking_image_1.png" width="80%" alt="Bilet Rezervasyon Projesi" />
   </p>
 
----
-
-## 🛠️ Genel Kurulum ve Çalıştırma Kılavuzu
-
-Depodaki projelerin çoğu benzer şekilde yapılandırılmıştır. Bir projeyi yerelinizde çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
-
-### 1. Depoyu Klonlayın
-```bash
-git clone https://github.com/EsraKaraduman/softito_projects.git
-cd softito_projects
-```
-
-### 2. Veritabanı Yapılandırması (SQL Server kullanan projeler için)
-* İlgili projenin klasörüne gidin ve `appsettings.json` dosyasını bulun.
-* `ConnectionStrings` altındaki `DefaultConnection` bağlantı dizesini kendi SQL Server adresinizle güncelleyin.
-
-### 3. Veritabanını Güncelleyin (Entity Framework Core)
-Visual Studio içindeki **Package Manager Console** (Paket Yöneticisi Konsolu) ekranını açın ve şu komutu çalıştırın:
-```bash
-Update-Database
-```
-*(Katmanlı mimarili projelerde varsayılan projeyi `Data` veya `Infrastructure` katmanı olarak seçtiğinizden emin olun.)*
-
-### 4. Projeyi Başlatın
-Visual Studio'da projeyi açın ve üst menüdeki yeşil **Oynat (Play)** butonuna tıklayarak yerel sunucuda (`localhost`) çalıştırın.
 
 ---
 
